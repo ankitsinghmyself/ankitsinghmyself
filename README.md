@@ -1,12 +1,9 @@
-<h1 align="center">
+<h1 align="left">
     🚀 About Me
 </h1>
 
-<p align="center">
-    <img src="https://avatars.githubusercontent.com/u/43289790?v=4" width="120" style="border-radius:50%;box-shadow:0 4px 16px #36bcf7;" alt="Ankit Singh Avatar" />
-</p>
 
-<p align="center">
+<p align="left">
     <b>💻 Software Engineer at <a href="https://lowes.com/">Lowe's India</a></b><br>
     <b>🌱 Currently learning <a href="https://aws.amazon.com/">AWS</a> &amp; <a href="https://www.typescriptlang.org/">TypeScript</a></b><br>
     <b>🤝 Open to collaborating on <a href="https://reactjs.org/">React</a> &amp; <a href="https://nextjs.org/">Next.js</a> projects</b><br>
@@ -33,17 +30,17 @@
     </a>
 </p>
 
-<h1 align="center">
+<h1 align="left">
     🌐 Connect with Me
 </h1>
 
-<p align="center">
+<p align="left">
     <img src="https://skillicons.dev/icons?i=react,nextjs,typescript,js,aws,html,css,git,github,vscode" alt="Tech Stack" />
 </p>
 
 <details>
     <summary><b>📊 GitHub Stats</b></summary>
-    <p align="center">
+    <p align="left">
         <img src="https://github-readme-stats.vercel.app/api?username=ankitsinghmyself&show_icons=true&theme=radical&hide_border=true" alt="GitHub Stats" />
         <br>
         <img src="https://github-readme-streak-stats.herokuapp.com/?user=ankitsinghmyself&theme=radical&hide_border=true" alt="GitHub Streak" />
