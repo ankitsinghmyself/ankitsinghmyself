@@ -11,8 +11,10 @@
     <b>💬 Ask me about <a href="https://reactjs.org/">React</a>, <a href="https://nextjs.org/">Next.js</a>, <a href="https://www.typescriptlang.org/">TypeScript</a></b><br>
     <b>📫 Reach me: <a href="https://www.linkedin.com/in/ankitsinghmyself/">LinkedIn</a> / <a href="mailto:ankitsinghmyself@gmail.com">Mail</a></b>
 </p>
-
-<p align="center">
+<h1 align="left">
+    🌐 Connect with Me
+</h1>
+<p align="left">
     <a href="https://linkedin.com/in/ankitsinghmyself">
         <img src="https://img.shields.io/badge/LinkedIn-Profile-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
     </a>
@@ -30,10 +32,10 @@
     </a>
 </p>
 
-<h1 align="left">
-    🌐 Connect with Me
-</h1>
 
+<h1 align="left">
+    🛠️ Tech Stack
+</h1>
 <p align="left">
     <img src="https://skillicons.dev/icons?i=react,nextjs,typescript,js,aws,html,css,git,github,vscode" alt="Tech Stack" />
 </p>
