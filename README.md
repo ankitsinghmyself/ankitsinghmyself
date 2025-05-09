@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=36&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=🚀+About+Me" alt="Typing SVG" />
+    🚀 About Me
 </h1>
 
 <p align="center">
@@ -33,10 +33,8 @@
     </a>
 </p>
 
----
-
 <h1 align="center">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=32&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=🌐+Connect+with+Me" alt="Typing SVG" />
+    🌐 Connect with Me
 </h1>
 
 <p align="center">
