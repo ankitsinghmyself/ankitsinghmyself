@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const calculateYearsFromJan2019 = () => {
-  const startDate = new Date("2019-01-01");
+  const startDate = new Date("2020-08-31");
   const currentDate = new Date();
   const diff = currentDate.getTime() - startDate.getTime();
 
