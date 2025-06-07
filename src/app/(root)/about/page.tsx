@@ -6,7 +6,7 @@ import GetInTouch from "@/components/get-in-touch";
 import PageContainer from "@/components/page/page-container";
 import PageHeader from "@/components/page/page-header";
 import { constructMetadata } from "@/lib/metadata";
-import { calculateYearsFromJan2019 } from "@/lib/utils";
+import { calculateYearsFromSep2020 } from "@/lib/utils";
 
 export const metadata: Metadata = constructMetadata({
   preTitle: "About | ",
@@ -42,7 +42,7 @@ const AboutPage = () => {
                 What I Do
               </p>
               <p className="text-[18px] leading-[160%] text-muted">
-                With {calculateYearsFromJan2019()} years of invaluable experience, I’ve honed my skills in
+                With {calculateYearsFromSep2020()} years of invaluable experience, I&apos;ve honed my skills in
                 JavaScript and TypeScript, focusing on frameworks like Next.js
                 and React. I specialize in building intuitive, interactive web
                 applications using Tailwind CSS and various CMS platforms,

@@ -5,8 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const calculateYearsFromJan2019 = () => {
-  const startDate = new Date("2020-08-31");
+export const calculateYearsFromSep2020 = () => {
+  const startDate = new Date("2020-09-01");
   const currentDate = new Date();
   const diff = currentDate.getTime() - startDate.getTime();
 

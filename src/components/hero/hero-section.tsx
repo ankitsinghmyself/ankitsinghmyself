@@ -1,7 +1,7 @@
 import Link from "next/link";
 import HeroImage from "./hero-image";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
-import { calculateYearsFromJan2019 } from "@/lib/utils";
+import { calculateYearsFromSep2020 } from "@/lib/utils";
 
 const HeroSection = () => {
   return (
@@ -20,10 +20,10 @@ const HeroSection = () => {
           <span>A self-taught developer with</span>
           <Tooltip>
             <TooltipTrigger className="border-dashed border-b border-muted/50 mx-1 hover:text-foreground transition duration-300 hover:border-muted-foreground">
-              {calculateYearsFromJan2019()} years
+              {calculateYearsFromSep2020()} years
             </TooltipTrigger>
             <TooltipContent className="dark:bg-onyx font-semibold text-muted-foreground border-opacity-0 shadow-lg">
-              Since Nov 2019
+              Since Sep 2020
             </TooltipContent>
           </Tooltip>
           <span>
