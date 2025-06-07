@@ -6,6 +6,7 @@ import GetInTouch from "@/components/get-in-touch";
 import PageContainer from "@/components/page/page-container";
 import PageHeader from "@/components/page/page-header";
 import { constructMetadata } from "@/lib/metadata";
+import { calculateYearsFromJan2019 } from "@/lib/utils";
 
 export const metadata: Metadata = constructMetadata({
   preTitle: "About | ",
@@ -41,7 +42,7 @@ const AboutPage = () => {
                 What I Do
               </p>
               <p className="text-[18px] leading-[160%] text-muted">
-                With two years of invaluable experience, I’ve honed my skills in
+                With {calculateYearsFromJan2019()} years of invaluable experience, I’ve honed my skills in
                 JavaScript and TypeScript, focusing on frameworks like Next.js
                 and React. I specialize in building intuitive, interactive web
                 applications using Tailwind CSS and various CMS platforms,
@@ -69,8 +70,8 @@ const AboutPage = () => {
                 Before diving into full-stack development, I focused on
                 optimizing web applications. I boosted loading speeds with
                 Next.js, enhancing user engagement, and streamlined APIs to
-                create a smoother experience. My projects, like Projectify and
-                DigiBee Marketplace, reflect my ability to develop solutions
+                create a smoother experience. My projects, like Template UI and
+                shopmate Marketplace, reflect my ability to develop solutions
                 that foster collaboration and drive success.
               </p>
             </div>
