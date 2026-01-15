@@ -11,7 +11,6 @@ export const calculateYearsFromSep2020 = () => {
   
   let years = currentDate.getFullYear() - startDate.getFullYear();
   
-  // Check if we haven't reached September yet this year
   if (currentDate.getMonth() < startDate.getMonth() || 
       (currentDate.getMonth() === startDate.getMonth() && currentDate.getDate() < startDate.getDate())) {
     years--;

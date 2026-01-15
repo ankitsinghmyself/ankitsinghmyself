@@ -1,19 +1,20 @@
-import { Metadata } from "next";
-import Image from "next/image";
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import GetInTouch from "@/components/get-in-touch";
 import PageContainer from "@/components/page/page-container";
 import PageHeader from "@/components/page/page-header";
-import { constructMetadata } from "@/lib/metadata";
+import ProtectedImage from "@/components/protected-image";
 import { calculateYearsFromSep2020 } from "@/lib/utils";
 
-export const metadata: Metadata = constructMetadata({
-  preTitle: "About | ",
-  image: "/open-graph/about.jpg",
-});
-
 const AboutPage = () => {
+  const [years, setYears] = useState("5+"); // fallback
+
+  useEffect(() => {
+    setYears(calculateYearsFromSep2020());
+  }, []);
   return (
     <>
     
@@ -42,7 +43,7 @@ const AboutPage = () => {
                 What I Do
               </p>
               <p className="text-[18px] leading-[160%] text-muted">
-                With {calculateYearsFromSep2020()} years of invaluable experience, I&apos;ve honed my skills in
+                With {years} years of invaluable experience, I&apos;ve honed my skills in
                 JavaScript and TypeScript, focusing on frameworks like Next.js
                 and React. I specialize in building intuitive, interactive web
                 applications using Tailwind CSS and various CMS platforms,
@@ -127,14 +128,12 @@ const AboutPage = () => {
 
           <div className="-order-1 col-span-12 md:order-2 md:col-span-4">
             <div className="group relative mb-20 flex justify-center">
-              <picture className="relative z-20 block w-fit overflow-hidden rounded-2xl border-[1px] border-card-border">
-                <Image
-                  src="/portrait.jpg"
-                  width={400}
-                  height={400}
-                  alt="Ankit"
-                />
-              </picture>
+              <ProtectedImage
+                src="/images/IMG_5057.png"
+                width={400}
+                height={400}
+                alt="Ankit"
+              />
             </div>
 
             <GetInTouch className="hidden md:flex" />
