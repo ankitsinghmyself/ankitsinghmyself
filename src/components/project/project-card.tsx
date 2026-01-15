@@ -73,6 +73,7 @@ const ProjectCard = ({
           <Link
             prefetch={false}
             href={projectUrl}
+            target="_blank"
             className="cursor-pointer rounded-lg items-center inline-flex font-semibold group mt-6 justify-start gap-2 text-onyx transition dark:text-white"
           >
             View Project{" "}

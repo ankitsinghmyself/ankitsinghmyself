@@ -29,7 +29,6 @@ const info: InfoCardsProps[] = [
     description: "Books and pieces of wisdom I’ve enjoyed reading",
     image: "/bookshelf.png",
     href: "/bookshelf",
-    isWorkInProgress: true,
   },
   {
     title: "Tech Stack",

@@ -8,6 +8,14 @@ const nextConfig: NextConfig = {
         hostname: "cdn.sanity.io",
         protocol: "https",
       },
+      {
+        hostname: "via.placeholder.com",
+        protocol: "https",
+      },
+      {
+        hostname: "covers.openlibrary.org",
+        protocol: "https",
+      },
     ],
   }
 };
