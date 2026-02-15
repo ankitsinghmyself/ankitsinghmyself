@@ -13,8 +13,8 @@ import { urlFor } from "@/sanity/lib/image";
 type ProjectCardProps = {
   title: string;
   description: string;
-  image: SanityImageSource;
-  projectUrl: string;
+  image?: SanityImageSource | null;
+  projectUrl?: string | null;
   icon: SanityImageSource | null;
   position: number;
   progress: MotionValue<number>;
@@ -70,34 +70,40 @@ const ProjectCard = ({
             {description}
           </CardDescription>
 
-          <Link
-            prefetch={false}
-            href={projectUrl}
-            target="_blank"
-            className="cursor-pointer rounded-lg items-center inline-flex font-semibold group mt-6 justify-start gap-2 text-onyx transition dark:text-white"
-          >
-            View Project{" "}
-            <MoveRightIcon
-              size={16}
-              className="transition group-hover:translate-x-1"
-            />
-          </Link>
+          {projectUrl ? (
+            <Link
+              prefetch={false}
+              href={projectUrl}
+              target="_blank"
+              className="cursor-pointer rounded-lg items-center inline-flex font-semibold group mt-6 justify-start gap-2 text-onyx transition dark:text-white"
+            >
+              View Project{" "}
+              <MoveRightIcon
+                size={16}
+                className="transition group-hover:translate-x-1"
+              />
+            </Link>
+          ) : (
+            <p className="mt-6 text-sm text-muted-foreground">Link coming soon.</p>
+          )}
         </div>
 
-        <div className="w-full flex-1 hidden lg:flex overflow-hidden rounded-3xl rounded-r-none">
-          <motion.div
-            style={{ scale: imageScale }}
-            className="relative w-full flex-1"
-          >
-            <Image
-              src={urlFor(image).url()}
-              alt="Project Image"
-              fill
-              blurDataURL={urlFor(image).width(24).height(24).blur(10).url()}
-              className="object-cover group-hover:transform group-hover:scale-105 transition duration-300 overflow-hidden my-auto rounded-2xl rounded-r-none"
-            />
-          </motion.div>
-        </div>
+        {image ? (
+          <div className="w-full flex-1 hidden lg:flex overflow-hidden rounded-3xl rounded-r-none">
+            <motion.div
+              style={{ scale: imageScale }}
+              className="relative w-full flex-1"
+            >
+              <Image
+                src={urlFor(image).url()}
+                alt="Project Image"
+                fill
+                blurDataURL={urlFor(image).width(24).height(24).blur(10).url()}
+                className="object-cover group-hover:transform group-hover:scale-105 transition duration-300 overflow-hidden my-auto rounded-2xl rounded-r-none"
+              />
+            </motion.div>
+          </div>
+        ) : null}
       </Card>
     </motion.div>
   );

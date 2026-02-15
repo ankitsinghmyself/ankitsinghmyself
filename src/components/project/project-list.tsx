@@ -22,18 +22,11 @@ const ProjectList = ({ projects }: ProjectListProps) => {
     <div className="flex flex-col items-center gap-y-8 mt-8" ref={container}>
       {projects.map(
         (
-          { _id, codeLink, description, imgUrl, projectLink, title, icon },
+          { _id, description, imgUrl, projectLink, title, icon },
           idx
         ) => {
           const targetScale = 1 - (projects.length - idx) * 0.05;
-          if (
-            !_id ||
-            !codeLink ||
-            !description ||
-            !imgUrl ||
-            !projectLink ||
-            !title
-          ) {
+          if (!_id || !title) {
             return null;
           }
 
@@ -43,8 +36,8 @@ const ProjectList = ({ projects }: ProjectListProps) => {
               image={imgUrl}
               icon={icon}
               projectUrl={projectLink}
-              description={description}
-              key={`project-card-${_id}}`}
+              description={description || "Description coming soon."}
+              key={`project-card-${_id}`}
               position={idx + 1}
               progress={scrollYProgress}
               range={[idx * 0.25, 1]}
