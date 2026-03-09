@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useReducedMotion } from "motion/react";
+
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 
 type Bounds = {
   height: number;
@@ -35,7 +36,7 @@ const rgba = (tint: [number, number, number], alpha: number) => {
 };
 
 const BackgroundParticleField = () => {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = usePrefersReducedMotion();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [bounds, setBounds] = useState<Bounds>({ width: 0, height: 0 });

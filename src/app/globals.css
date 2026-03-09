@@ -280,6 +280,9 @@ html {
   pointer-events: none;
   translate: -50% -50%;
   will-change: transform, opacity;
+  transition:
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 160ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .custom-cursor-ring {
@@ -307,6 +310,7 @@ html {
   box-shadow:
     0 0 10px rgba(125, 211, 252, 0.4),
     0 0 14px rgba(255, 45, 154, 0.24);
+  transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .custom-cursor-glow {
@@ -644,6 +648,26 @@ html {
   50% {
     opacity: 1;
     transform: translateY(-2px);
+  }
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(2.5deg);
+  }
+}
+
+@keyframes hero-scroll {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(7px);
   }
 }
 

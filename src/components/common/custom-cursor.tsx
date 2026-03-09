@@ -1,12 +1,9 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { useEffect, useState } from "react";
-import {
-  motion,
-  useMotionValue,
-  useReducedMotion,
-  useSpring,
-} from "motion/react";
+
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 
 const interactiveSelector = [
   "a",
@@ -32,26 +29,17 @@ const textInputSelector = [
 ].join(",");
 
 const CustomCursor = () => {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = usePrefersReducedMotion();
   const [enabled, setEnabled] = useState(false);
   const [visible, setVisible] = useState(false);
   const [interactive, setInteractive] = useState(false);
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  const glowX = useSpring(cursorX, {
-    stiffness: 220,
-    damping: 32,
-    mass: 0.65,
-  });
-  const glowY = useSpring(cursorY, {
-    stiffness: 220,
-    damping: 32,
-    mass: 0.65,
-  });
+  const [position, setPosition] = useState({ x: -100, y: -100 });
 
   useEffect(() => {
     if (shouldReduceMotion) {
       setEnabled(false);
+      setVisible(false);
+      setInteractive(false);
       return;
     }
 
@@ -95,8 +83,7 @@ const CustomCursor = () => {
     }
 
     const handlePointerMove = (event: PointerEvent) => {
-      cursorX.set(event.clientX);
-      cursorY.set(event.clientY);
+      setPosition({ x: event.clientX, y: event.clientY });
 
       setVisible((current) => current || true);
 
@@ -121,42 +108,36 @@ const CustomCursor = () => {
       window.removeEventListener("pointerleave", handlePointerLeave);
       document.removeEventListener("mouseleave", handlePointerLeave);
     };
-  }, [cursorX, cursorY, enabled]);
+  }, [enabled]);
 
   if (!enabled) {
     return null;
   }
 
+  const glowStyle: CSSProperties = {
+    opacity: visible ? (interactive ? 0.32 : 0.22) : 0,
+    transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%) scale(${
+      visible ? (interactive ? 1.08 : 1) : 0.55
+    })`,
+  };
+
+  const ringStyle: CSSProperties = {
+    opacity: visible ? 1 : 0,
+    transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%) scale(${
+      interactive ? 1.08 : 1
+    })`,
+  };
+
+  const dotStyle: CSSProperties = {
+    transform: `scale(${interactive ? 0.94 : 1})`,
+  };
+
   return (
     <>
-      <motion.div
-        aria-hidden="true"
-        className="custom-cursor-glow"
-        animate={{
-          opacity: visible ? (interactive ? 0.32 : 0.22) : 0,
-          scale: visible ? (interactive ? 1.08 : 1) : 0.55,
-        }}
-        style={{ x: glowX, y: glowY }}
-        transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
-      />
-      <motion.div
-        aria-hidden="true"
-        className="custom-cursor-ring"
-        animate={{
-          opacity: visible ? 1 : 0,
-          scale: interactive ? 1.08 : 1,
-        }}
-        style={{ x: cursorX, y: cursorY }}
-        transition={{ duration: 0.12, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <motion.span
-          className="custom-cursor-dot"
-          animate={{
-            scale: interactive ? 0.94 : 1,
-          }}
-          transition={{ duration: 0.12, ease: [0.22, 1, 0.36, 1] }}
-        />
-      </motion.div>
+      <div aria-hidden="true" className="custom-cursor-glow" style={glowStyle} />
+      <div aria-hidden="true" className="custom-cursor-ring" style={ringStyle}>
+        <span className="custom-cursor-dot" style={dotStyle} />
+      </div>
     </>
   );
 };

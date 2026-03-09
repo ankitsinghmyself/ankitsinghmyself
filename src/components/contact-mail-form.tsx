@@ -1,22 +1,19 @@
 "use client";
 
-import { FormEvent, useState } from "react";
-import { motion } from "motion/react";
-
-import { fadeUp, staggerContainer, viewport } from "@/lib/motion";
+import { FormEvent } from "react";
 
 type ContactMailFormProps = {
   email: string;
 };
 
 const ContactMailForm = ({ email }: ContactMailFormProps) => {
-  const [name, setName] = useState("");
-  const [senderEmail, setSenderEmail] = useState("");
-  const [message, setMessage] = useState("");
-
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get("name") ?? "");
+    const senderEmail = String(formData.get("email") ?? "");
+    const message = String(formData.get("message") ?? "");
     const subject = `Portfolio enquiry from ${name || "website visitor"}`;
     const body = [
       `Name: ${name}`,
@@ -31,54 +28,41 @@ const ContactMailForm = ({ email }: ContactMailFormProps) => {
   };
 
   return (
-    <motion.form
-      className="grid gap-4"
-      initial="hidden"
-      onSubmit={handleSubmit}
-      viewport={viewport}
-      variants={staggerContainer(0.04, 0.08)}
-      whileInView="visible"
-    >
-      <motion.div variants={fadeUp()}>
+    <form className="grid gap-4" onSubmit={handleSubmit}>
+      <div>
         <input
           required
+          name="name"
           type="text"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
           placeholder="Your name"
           className="neo-input"
         />
-      </motion.div>
-      <motion.div variants={fadeUp()}>
+      </div>
+      <div>
         <input
           required
+          name="email"
           type="email"
-          value={senderEmail}
-          onChange={(event) => setSenderEmail(event.target.value)}
           placeholder="Email address"
           className="neo-input"
         />
-      </motion.div>
-      <motion.div variants={fadeUp()}>
+      </div>
+      <div>
         <textarea
           required
+          name="message"
           rows={4}
-          value={message}
-          onChange={(event) => setMessage(event.target.value)}
           placeholder="Write your message"
           className="neo-input neo-input-textarea"
         />
-      </motion.div>
-      <motion.button
+      </div>
+      <button
         type="submit"
-        className="neo-button-primary inline-flex h-11 items-center justify-center rounded-xl px-5 text-sm font-semibold transition"
-        variants={fadeUp()}
-        whileHover={{ y: -3, scale: 1.01 }}
-        whileTap={{ scale: 0.98 }}
+        className="neo-button-primary inline-flex h-11 items-center justify-center rounded-xl px-5 text-sm font-semibold transition duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
       >
         Get in touch
-      </motion.button>
-    </motion.form>
+      </button>
+    </form>
   );
 };
 

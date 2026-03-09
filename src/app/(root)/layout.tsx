@@ -1,8 +1,6 @@
 import { Sora } from "next/font/google";
 
-import BootLoader from "@/components/common/boot-loader";
-import CustomCursor from "@/components/common/custom-cursor";
-import MotionProvider from "@/components/common/motion-provider";
+import CustomCursorGate from "@/components/common/custom-cursor-gate";
 import Footer from "@/components/common/footer";
 import Header from "@/components/common/header";
 import VercelAnalytics from "./vercel-analytics";
@@ -22,14 +20,11 @@ export default function RootLayout({
 
   return (
     <body suppressHydrationWarning className={`${sora.variable} antialiased`}>
-      <MotionProvider>
-        <BootLoader />
-        <CustomCursor />
-        <Header />
-        {children}
-        <Footer year={currentYear} />
-        <VercelAnalytics />
-      </MotionProvider>
+      <CustomCursorGate />
+      <Header />
+      {children}
+      <Footer year={currentYear} />
+      <VercelAnalytics />
     </body>
   );
 }
