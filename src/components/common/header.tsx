@@ -1,102 +1,131 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useMotionValueEvent, useScroll } from "motion/react";
-
-import { navLinks, socials } from "@/lib/constants";
-import Logo from "./logo";
-import MobileNav from "./mobile-nav";
+import { AnimatePresence, motion } from "motion/react";
+import { Download, Menu, X } from "lucide-react";
 import { useState } from "react";
-import { ThemeSwitch } from "../theme/theme-switch";
+
+import { fadeUp } from "@/lib/motion";
+import { navigation, resumeHref } from "@/lib/site";
+import Logo from "./logo";
 
 const Header = () => {
-  const [hidden, setHidden] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const { scrollY } = useScroll();
-
-  useMotionValueEvent(scrollY, "change", (latest: number) => {
-    const prev = scrollY.getPrevious() || 0;
-
-    if (latest > prev && latest > 100) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
-  });
   return (
-    <>
-      <motion.header
-        variants={{
-          visible: { y: 0 },
-          hidden: { y: -200 },
-        }}
-        initial={{ y: -200 }}
-        animate={hidden ? "hidden" : "visible"}
-        transition={{ duration: 0.2 }}
-        className="hidden px-4 md:block sticky top-5 w-full z-50"
-      >
-        <div className="container mx-auto flex h-16 w-full max-w-[1024px] items-center justify-between rounded-full border-[1px] border-white/25 bg-white/25 px-8 backdrop-blur-md dark:border-[#5E5E5E]/20 dark:bg-[#18181D]/30">
-          <div className="flex items-center gap-10">
-            <Link aria-label="Ankit Singh Logo" href="/">
-              <Logo width={50} height={50} />
+    <motion.header
+      animate="visible"
+      className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5"
+      initial="hidden"
+      variants={fadeUp(0, -18)}
+    >
+      <div className="mx-auto max-w-5xl rounded-full border border-white/10 bg-[#071225]/84 px-3 py-2 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+        <div className="flex items-center justify-between gap-3">
+          <motion.div whileHover={{ y: -2, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+            <Link href="/" className="flex items-center gap-2">
+              <Logo width={24} height={24} />
+              <span className="text-sm font-semibold text-white">Ankit</span>
             </Link>
-            <nav
-              aria-label="Main"
-              data-orientation="horizontal"
-              dir="ltr"
-              className="relative flex justify-center"
-            >
-              <div className="relative">
-                <ul className="m-0 flex list-none items-center gap-10 rounded-[6px] p-1">
-                  {navLinks.map((link) => (
-                    <li key={`nav-link-${link.name}`}>
-                      <Link
-                        className="block py-2 text-onyx/70 transition-colors hover:text-onyx dark:text-muted-foreground dark:hover:text-white"
-                        href={link.href}
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </nav>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="flex gap-6 text-onyx/70 dark:text-white/70 items-center">
-              {socials.map((social) => (
+          </motion.div>
+
+          <nav className="hidden items-center gap-6 md:flex">
+            {navigation.map((item, index) => (
+              <motion.div
+                key={item.href}
+                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: -10 }}
+                transition={{ delay: 0.1 + index * 0.05 }}
+                whileHover={{ y: -2 }}
+              >
                 <Link
-                  key={`header-social-${social.name}`}
-                  className="group transition hover:text-onyx dark:hover:text-white"
-                  target="_blank"
-                  aria-label={social.name}
-                  href={social.href}
+                  href={item.href}
+                  className="header-link text-xs font-medium text-white/72 transition hover:text-white"
                 >
-                  <social.icon className="size-6" />
+                  {item.label}
                 </Link>
-              ))}
-              <ThemeSwitch variant="ghost" />
-            </div>
-          </div>
+              </motion.div>
+            ))}
+          </nav>
+
+          <motion.div
+            animate={{ opacity: 1, y: 0 }}
+            className="hidden items-center gap-2 md:flex"
+            initial={{ opacity: 0, y: -10 }}
+            transition={{ delay: 0.28 }}
+          >
+            <motion.div whileHover={{ y: -2, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Link
+                href={resumeHref}
+                target="_blank"
+                className="inline-flex h-9 items-center gap-2 rounded-full border border-white/12 bg-white/6 px-4 text-xs font-semibold text-white transition hover:bg-white/10"
+              >
+                Resume
+                <Download className="size-3.5" />
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          <motion.button
+            type="button"
+            animate={{ opacity: 1, scale: 1 }}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/6 text-white md:hidden"
+            initial={{ opacity: 0, scale: 0.92 }}
+            transition={{ delay: 0.18 }}
+            aria-label="Toggle navigation"
+            onClick={() => setMenuOpen((open) => !open)}
+            whileTap={{ scale: 0.94 }}
+          >
+            {menuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
+          </motion.button>
         </div>
-      </motion.header>
 
-      {/* Logo on the top in mobile view */}
-      <Link
-        href="/"
-        aria-label="Ankit Singh Logo"
-        className="relative top-5 left-0 right-0"
-      >
-        <Logo
-          width={50}
-          height={50}
-          className="block mx-auto md:hidden opacity-60"
-        />
-      </Link>
-
-      {/* Mobile navigation bar */}
-      <MobileNav />
-    </>
+        <AnimatePresence initial={false}>
+          {menuOpen ? (
+            <motion.div
+              animate={{ height: "auto", opacity: 1 }}
+              className="overflow-hidden"
+              exit={{ height: 0, opacity: 0 }}
+              initial={{ height: 0, opacity: 0 }}
+            >
+              <div className="mt-3 grid gap-2 border-t border-white/10 pt-3 md:hidden">
+                {navigation.map((item, index) => (
+                  <motion.div
+                    key={item.href}
+                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, x: -12 }}
+                    transition={{ delay: index * 0.05 }}
+                  >
+                    <Link
+                      href={item.href}
+                      className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white/82"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ))}
+                <motion.div
+                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, x: -12 }}
+                  transition={{ delay: navigation.length * 0.05 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Link
+                    href={resumeHref}
+                    target="_blank"
+                    className="mt-1 inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#7c4dff] via-[#675dff] to-[#ff2d9a] px-4 text-sm font-semibold text-white"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Resume
+                    <Download className="size-4" />
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+      </div>
+    </motion.header>
   );
 };
 

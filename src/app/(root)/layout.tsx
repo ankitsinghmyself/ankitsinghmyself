@@ -1,17 +1,14 @@
-import { Inter } from "next/font/google";
+import { Sora } from "next/font/google";
 
+import MotionProvider from "@/components/common/motion-provider";
 import Footer from "@/components/common/footer";
-import FooterGradient from "@/components/common/footer-gradient";
 import Header from "@/components/common/header";
-import HeaderGradient from "@/components/common/header-gradient";
-import { ThemeProvider } from "@/components/theme/theme-provider";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import VercelAnalytics from "./vercel-analytics";
-import { SanityLive } from "@/sanity/lib/live";
 
-const inter = Inter({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  subsets: ["latin-ext"],
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export default function RootLayout({
@@ -20,18 +17,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <body className={`antialiased relative ${inter.className}`}>
-      <HeaderGradient />
-      <ThemeProvider attribute="class" defaultTheme="dark">
-        <TooltipProvider>
-          <Header />
-          {children}
-          <Footer />
-        </TooltipProvider>
-      </ThemeProvider>
-      <FooterGradient />
-      <SanityLive />
-      <VercelAnalytics />
+    <body className={`${sora.variable} antialiased`}>
+      <MotionProvider>
+        <Header />
+        {children}
+        <Footer />
+        <VercelAnalytics />
+      </MotionProvider>
     </body>
   );
 }

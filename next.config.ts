@@ -1,13 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  distDir: process.env.NEXT_DIST_DIR ?? ".next",
   images: {
     remotePatterns: [
-      {
-        hostname: "cdn.sanity.io",
-        protocol: "https",
-      },
       {
         hostname: "via.placeholder.com",
         protocol: "https",

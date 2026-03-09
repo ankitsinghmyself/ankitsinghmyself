@@ -1,72 +1,76 @@
-import { navLinks, socials } from "@/lib/constants";
-import Logo from "./logo";
+"use client";
+
 import Link from "next/link";
+import { motion } from "motion/react";
+
+import { fadeUp, staggerContainer, viewport } from "@/lib/motion";
+import { contact, socials } from "@/lib/site";
+import Logo from "./logo";
 
 const Footer = () => {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className=" container mx-auto px-5 relative mt-16 min-h-[326px] pb-32 md:pb-12 z-0">
-      <div className="h-[1px] w-full bg-black/10 dark:bg-white/10"></div>
-      <div className="container mx-auto relative z-10 mt-20 flex w-full max-w-5xl flex-col items-start justify-between gap-12 md:h-[236px] md:flex-row">
-        <div className="flex flex-col justify-between h-full w-full">
-          <div className="flex flex-col ">
-            <Logo width={150} height={150} />
-            <p className="mt-4 text-onyx/60 dark:text-white/40">
-              Thanks for stopping by <span className="text-2xl">ッ</span>
-            </p>
+    <motion.footer
+      className="border-t border-white/8 bg-[#050916]"
+      initial="hidden"
+      viewport={viewport}
+      variants={fadeUp()}
+      whileInView="visible"
+    >
+      <motion.div
+        className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_0.9fr_0.9fr] lg:px-8"
+        variants={staggerContainer(0.04, 0.1)}
+      >
+        <motion.div variants={fadeUp()}>
+          <div className="flex items-center gap-2">
+            <Logo width={22} height={22} />
+            <span className="text-sm font-semibold text-white">Ankit Singh</span>
           </div>
-          <p className="mt-10 text-sm text-onyx/60 dark:text-white/40 md:mt-0">
-            Developed by Ankit Singh with this{" "}
-            <Link
-              href="https://www.figma.com/community/file/1266863403759514317"
-              prefetch={false}
-              className="underline underline-offset-2"
-            >
-              UI kit
-            </Link>
+          <p className="mt-4 max-w-sm text-sm leading-7 text-white/58">
+            Senior frontend engineering, scalable systems, and design-aware web
+            experiences with measurable product impact.
           </p>
-        </div>
-        <div className="grid gap-16 -order-1 md:order-2 grid-cols-2 md:grid-cols-3">
-          <div className="flex flex-col gap-8">
-            <p className="font-bold text-onyx dark:text-white">Links</p>
-            <ul className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <li
-                  key={`footer-link-${link.name}`}
-                  className="flex items-center gap-2 group text-onyx/60 hover:text-onyx dark:text-muted dark:hover:text-white"
-                >
-                  <Link
-                    prefetch={false}
-                    className="transition-colors duration-150"
-                    href={link.href}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+        </motion.div>
+
+        <motion.div variants={fadeUp()}>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/42">
+            Contact
+          </p>
+          <div className="mt-4 grid gap-3 text-sm text-white/66">
+            <Link href={`mailto:${contact.email}`}>{contact.email}</Link>
+            <span>Bengaluru, India / Remote</span>
           </div>
-          <div className="flex flex-col gap-8 md:col-span-2">
-            <p className="font-bold text-onyx dark:text-white">Elsewhere</p>
-            <ul className="flex flex-col gap-4 text-muted">
-              {socials.map((social) => (
-                <li
-                  key={`footer-socials-${social.name}`}
-                  className="flex items-center gap-2 group text-onyx/60 hover:text-onyx dark:text-muted dark:hover:text-white"
+        </motion.div>
+
+        <motion.div variants={fadeUp()}>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/42">
+            Elsewhere
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            {socials.map((item) => (
+              <motion.div
+                key={item.label}
+                whileHover={{ y: -3, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Link
+                  href={item.href}
+                  target={item.href.startsWith("mailto:") ? undefined : "_blank"}
+                  className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-white/72 transition hover:bg-white/10 hover:text-white"
                 >
-                  <Link
-                    className="transition-colors duration-150"
-                    target="_blank"
-                    href={social.href}
-                  >
-                    {social.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                  {item.label}
+                </Link>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </motion.div>
+      </motion.div>
+
+      <div className="border-t border-white/8 px-4 py-4 text-center text-xs text-white/34 sm:px-6 lg:px-8">
+        {year} Ankit Singh
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

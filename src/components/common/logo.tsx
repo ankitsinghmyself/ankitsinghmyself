@@ -1,5 +1,3 @@
-"use client";
-
 type LogoProps = {
   className?: string;
   height: number;
@@ -11,15 +9,32 @@ const Logo = ({ className, height, width }: LogoProps) => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width}
-      className={className}
       height={height}
-      viewBox="0 0 41.298 31.248"
+      viewBox="0 0 64 64"
+      className={className}
+      fill="none"
     >
+      <defs>
+        <linearGradient id="logo-gradient" x1="10" y1="10" x2="54" y2="54">
+          <stop stopColor="#56CCF2" />
+          <stop offset="0.55" stopColor="#7C4DFF" />
+          <stop offset="1" stopColor="#FF2D9A" />
+        </linearGradient>
+      </defs>
+      <circle cx="32" cy="32" r="24" fill="url(#logo-gradient)" />
       <path
-        d="M19.656 0h12.96l1.439 2.16h-2.736c-1.8 0-2.159.504-1.367 1.872l10.512 18.432c1.512 2.593 1.439 8.784-4.248 8.784H20.304L18.72 28.44H0l5.472-9.433h15.624L27 29.232h3.24c1.151 0 .863-1.152.071-2.592L17.496 4.752C16.056 2.16 17.928 0 19.656 0zm-.072 16.272H7.056l6.192-10.8 6.336 10.8z"
-        fillRule="evenodd"
-        clipRule="evenodd"
-        className="fill-black dark:fill-white"
+        d="M23 21L14 32L23 43"
+        stroke="#F8FAFF"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M41 21L50 32L41 43"
+        stroke="#F8FAFF"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
