@@ -1,5 +1,6 @@
 import { Sora } from "next/font/google";
 
+import BootLoader from "@/components/common/boot-loader";
 import CustomCursor from "@/components/common/custom-cursor";
 import MotionProvider from "@/components/common/motion-provider";
 import Footer from "@/components/common/footer";
@@ -17,13 +18,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const currentYear = new Date().getUTCFullYear();
+
   return (
-    <body className={`${sora.variable} antialiased`}>
+    <body suppressHydrationWarning className={`${sora.variable} antialiased`}>
       <MotionProvider>
+        <BootLoader />
         <CustomCursor />
         <Header />
         {children}
-        <Footer />
+        <Footer year={currentYear} />
         <VercelAnalytics />
       </MotionProvider>
     </body>

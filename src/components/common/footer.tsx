@@ -7,9 +7,11 @@ import { fadeUp, staggerContainer, viewport } from "@/lib/motion";
 import { contact, socials } from "@/lib/site";
 import Logo from "./logo";
 
-const Footer = () => {
-  const year = new Date().getFullYear();
+type FooterProps = {
+  year: number;
+};
 
+const Footer = ({ year }: FooterProps) => {
   return (
     <motion.footer
       className="border-t border-white/8 bg-[#050916]"
