@@ -1,8 +1,15 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from "motion/react";
 import {
   ArrowDown,
   ArrowRight,
@@ -11,7 +18,9 @@ import {
   MapPin,
 } from "lucide-react";
 
+import BackgroundParticleField from "@/components/background-particle-field";
 import ContactMailForm from "@/components/contact-mail-form";
+import HeroParticleName from "@/components/hero-particle-name";
 import {
   about,
   contact,
@@ -72,6 +81,69 @@ const SectionHeading = ({
 
 const HomePage = () => {
   const shouldReduceMotion = useReducedMotion();
+  const [hasFinePointer, setHasFinePointer] = useState(false);
+  const [pointerActive, setPointerActive] = useState(false);
+  const pointerRatioX = useMotionValue(0);
+  const pointerRatioY = useMotionValue(0);
+  const reactiveX = useSpring(pointerRatioX, {
+    stiffness: 90,
+    damping: 22,
+    mass: 0.95,
+  });
+  const reactiveY = useSpring(pointerRatioY, {
+    stiffness: 90,
+    damping: 22,
+    mass: 0.95,
+  });
+  const neonWashX = useTransform(reactiveX, [-0.5, 0.5], [-48, 48]);
+  const neonWashY = useTransform(reactiveY, [-0.5, 0.5], [-36, 36]);
+  const neonMeshX = useTransform(reactiveX, [-0.5, 0.5], [30, -30]);
+  const neonMeshY = useTransform(reactiveY, [-0.5, 0.5], [22, -22]);
+  const neonTilt = useTransform(reactiveX, [-0.5, 0.5], [-3, 3]);
+  const particleLayerX = useTransform(reactiveX, [-0.5, 0.5], [-18, 18]);
+  const particleLayerY = useTransform(reactiveY, [-0.5, 0.5], [-12, 12]);
+  const orbOneX = useTransform(reactiveX, [-0.5, 0.5], [-16, 22]);
+  const orbOneY = useTransform(reactiveY, [-0.5, 0.5], [-18, 14]);
+  const orbTwoX = useTransform(reactiveX, [-0.5, 0.5], [18, -14]);
+  const orbTwoY = useTransform(reactiveY, [-0.5, 0.5], [16, -20]);
+  const orbThreeX = useTransform(reactiveX, [-0.5, 0.5], [-10, 12]);
+  const orbThreeY = useTransform(reactiveY, [-0.5, 0.5], [14, -12]);
+
+  useEffect(() => {
+    if (shouldReduceMotion) {
+      setHasFinePointer(false);
+      setPointerActive(false);
+      pointerRatioX.set(0);
+      pointerRatioY.set(0);
+      return;
+    }
+
+    const media = window.matchMedia("(pointer: fine)");
+    const syncPointerCapability = () => {
+      setHasFinePointer(media.matches);
+      if (!media.matches) {
+        setPointerActive(false);
+        pointerRatioX.set(0);
+        pointerRatioY.set(0);
+      }
+    };
+
+    syncPointerCapability();
+
+    if (typeof media.addEventListener === "function") {
+      media.addEventListener("change", syncPointerCapability);
+
+      return () => {
+        media.removeEventListener("change", syncPointerCapability);
+      };
+    }
+
+    media.addListener(syncPointerCapability);
+
+    return () => {
+      media.removeListener(syncPointerCapability);
+    };
+  }, [pointerRatioX, pointerRatioY, shouldReduceMotion]);
 
   const cardHover = shouldReduceMotion
     ? undefined
@@ -97,50 +169,88 @@ const HomePage = () => {
         },
       };
 
+  const handlePointerMove = (event: React.PointerEvent<HTMLElement>) => {
+    if (!hasFinePointer || shouldReduceMotion) {
+      return;
+    }
+
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const nextX = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const nextY = (event.clientY - bounds.top) / bounds.height - 0.5;
+
+    pointerRatioX.set(nextX);
+    pointerRatioY.set(nextY);
+
+    if (!pointerActive) {
+      setPointerActive(true);
+    }
+  };
+
+  const handlePointerLeave = () => {
+    pointerRatioX.set(0);
+    pointerRatioY.set(0);
+
+    if (!pointerActive) {
+      return;
+    }
+
+    setPointerActive(false);
+  };
+
   return (
-    <main className="neo-shell overflow-hidden">
+    <main
+      className="neo-shell overflow-hidden"
+      onPointerLeave={handlePointerLeave}
+      onPointerMove={handlePointerMove}
+    >
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
       >
         <motion.div
-          animate={
-            shouldReduceMotion
-              ? undefined
-              : {
-                  x: [0, 54, -18, 0],
-                  y: [0, -46, 14, 0],
-                  scale: [1, 1.08, 0.96, 1],
-                }
+          aria-hidden="true"
+          className="neo-gradient-mesh absolute inset-[-18%]"
+          animate={{ opacity: hasFinePointer ? (pointerActive ? 0.96 : 0.84) : 0.76 }}
+          style={
+            hasFinePointer
+              ? { x: neonWashX, y: neonWashY, rotate: neonTilt }
+              : undefined
           }
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        />
+        <motion.div
+          aria-hidden="true"
+          className="absolute inset-[-12%] bg-[radial-gradient(circle_at_18%_18%,rgba(86,204,242,0.16),transparent_28%),radial-gradient(circle_at_78%_18%,rgba(124,77,255,0.16),transparent_24%),radial-gradient(circle_at_52%_76%,rgba(255,45,154,0.12),transparent_28%)] blur-[90px]"
+          animate={{ opacity: hasFinePointer ? (pointerActive ? 0.84 : 0.66) : 0.58 }}
+          style={hasFinePointer ? { x: neonWashX, y: neonWashY } : undefined}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        />
+        <motion.div
+          aria-hidden="true"
+          className="absolute inset-[-12%] bg-[radial-gradient(circle_at_35%_28%,rgba(255,255,255,0.08),transparent_22%),radial-gradient(circle_at_65%_70%,rgba(86,204,242,0.08),transparent_24%),radial-gradient(circle_at_52%_45%,rgba(124,77,255,0.1),transparent_30%)] blur-[120px]"
+          animate={{ opacity: hasFinePointer ? (pointerActive ? 0.58 : 0.38) : 0.3 }}
+          style={hasFinePointer ? { x: neonMeshX, y: neonMeshY } : undefined}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        />
+        <motion.div
+          className="absolute inset-0"
+          style={
+            hasFinePointer ? { x: particleLayerX, y: particleLayerY } : undefined
+          }
+        >
+          <BackgroundParticleField />
+        </motion.div>
+        <motion.div
           className="ambient-orb ambient-orb-one"
-          transition={floatingTransition(20)}
+          style={hasFinePointer ? { x: orbOneX, y: orbOneY } : undefined}
         />
         <motion.div
-          animate={
-            shouldReduceMotion
-              ? undefined
-              : {
-                  x: [0, -42, 26, 0],
-                  y: [0, 34, -18, 0],
-                  scale: [1, 0.95, 1.06, 1],
-                }
-          }
           className="ambient-orb ambient-orb-two"
-          transition={floatingTransition(24)}
+          style={hasFinePointer ? { x: orbTwoX, y: orbTwoY } : undefined}
         />
         <motion.div
-          animate={
-            shouldReduceMotion
-              ? undefined
-              : {
-                  x: [0, 20, -28, 0],
-                  y: [0, 44, -12, 0],
-                  scale: [1, 1.06, 0.92, 1],
-                }
-          }
           className="ambient-orb ambient-orb-three"
-          transition={floatingTransition(26)}
+          style={hasFinePointer ? { x: orbThreeX, y: orbThreeY } : undefined}
         />
       </div>
 
@@ -180,12 +290,9 @@ const HomePage = () => {
           <motion.p className="neo-kicker mt-8" variants={fadeUp()}>
             {hero.kicker}
           </motion.p>
-          <motion.h1
-            className="mt-4 text-5xl font-semibold tracking-[-0.07em] text-white sm:text-7xl lg:text-[5.7rem]"
-            variants={fadeUp()}
-          >
-            Ankit <span className="neo-gradient-text">Singh</span>
-          </motion.h1>
+          <motion.div variants={fadeUp()}>
+            <HeroParticleName text={hero.name} />
+          </motion.div>
           <motion.p
             className="mt-4 text-lg font-medium text-white/82 sm:text-2xl"
             variants={fadeUp()}
@@ -283,55 +390,104 @@ const HomePage = () => {
           <SectionHeading kicker="About Me" title="About Me" />
 
           <motion.div
-            className="neo-panel grid gap-6 rounded-[28px] p-5 sm:p-6 lg:grid-cols-[320px_1fr] lg:p-8"
+            className="neo-panel relative grid items-center gap-8 overflow-hidden rounded-[32px] p-4 sm:p-6 lg:grid-cols-[340px_1fr] lg:p-8 xl:gap-12"
             initial="hidden"
             viewport={viewport}
             variants={staggerContainer(0.08, 0.12)}
             whileInView="visible"
           >
+            <div
+              aria-hidden="true"
+              className="absolute inset-y-0 left-0 w-full bg-[radial-gradient(circle_at_left,rgba(124,77,255,0.12),transparent_36%),radial-gradient(circle_at_right,rgba(86,204,242,0.08),transparent_30%)]"
+            />
             <motion.div
-              className="overflow-hidden rounded-[24px] border border-white/10 bg-[#091326]"
+              className="relative mx-auto w-full max-w-sm lg:max-w-[340px]"
               variants={fadeUp()}
-              whileHover={
-                shouldReduceMotion
-                  ? undefined
-                  : {
-                      scale: 1.015,
-                      transition: {
-                        type: "spring",
-                        stiffness: 220,
-                        damping: 18,
-                      },
-                    }
-              }
             >
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-8 bottom-8 top-12 rounded-[32px] bg-[radial-gradient(circle,rgba(124,77,255,0.32),rgba(86,204,242,0.2),transparent_72%)] blur-3xl"
+              />
               <motion.div
+                className="neo-panel-soft relative overflow-hidden rounded-[30px] border border-white/10 p-3 sm:p-4"
                 whileHover={
                   shouldReduceMotion
                     ? undefined
                     : {
-                        scale: 1.04,
-                        transition: { duration: 0.8 },
+                        y: -6,
+                        scale: 1.01,
+                        transition: {
+                          type: "spring",
+                          stiffness: 220,
+                          damping: 18,
+                        },
                       }
                 }
               >
-                <Image
-                  src="/portrait.jpg"
-                  alt="Portrait of Ankit Singh"
-                  width={900}
-                  height={1100}
-                  className="h-full min-h-[320px] w-full object-cover object-top"
-                />
+                <div className="relative aspect-[11/13] overflow-hidden rounded-[24px] bg-[linear-gradient(180deg,#e8e0dc_0%,#d8cfca_42%,#b8b0ac_100%)]">
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.42),transparent_44%)]"
+                  />
+                  <motion.div
+                    className="relative h-full w-full"
+                    whileHover={
+                      shouldReduceMotion
+                        ? undefined
+                        : {
+                            scale: 1.04,
+                            transition: { duration: 0.8 },
+                          }
+                    }
+                    >
+                      <Image
+                        src="/images/IMG_5057.png"
+                        alt="Photo of Ankit Singh"
+                        fill
+                        sizes="(min-width: 1280px) 360px, (min-width: 1024px) 320px, (min-width: 640px) 420px, 100vw"
+                        className="translate-y-4 scale-[1.16] object-cover object-top"
+                      />
+                    </motion.div>
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#071225] via-[#071225]/68 to-transparent"
+                  />
+                  <div className="absolute inset-x-4 bottom-4 rounded-[22px] border border-white/10 bg-[#071225]/72 px-4 py-4 backdrop-blur-md">
+                    <p className="text-lg font-semibold text-white">
+                      {hero.name}
+                    </p>
+                    <p className="mt-1 text-sm text-white/72">{hero.title}</p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      <span className="inline-flex items-center rounded-full border border-[#56ccf2]/20 bg-[#56ccf2]/12 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7dd3fc]">
+                        {hero.availability}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] text-white/60">
+                        <MapPin className="size-3 text-[#56ccf2]" />
+                        {hero.location}
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             </motion.div>
 
-            <motion.div className="flex flex-col" variants={fadeUp()}>
+            <motion.div
+              className="relative flex flex-col justify-center lg:border-l lg:border-white/8 lg:pl-8 xl:pl-10"
+              variants={fadeUp()}
+            >
               <motion.div
                 className="inline-flex w-fit items-center rounded-full border border-[#56ccf2]/20 bg-[#56ccf2]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#7dd3fc]"
                 variants={fadeUp()}
               >
                 {about.greeting}
               </motion.div>
+
+              <motion.h3
+                className="mt-5 max-w-2xl text-2xl font-semibold tracking-[-0.05em] text-white sm:text-[2rem]"
+                variants={fadeUp()}
+              >
+                Fast frontend. Strong UX. Production-ready delivery.
+              </motion.h3>
 
               <motion.div
                 className="mt-5 space-y-4 text-sm leading-7 text-white/66 sm:text-[15px]"
@@ -345,21 +501,21 @@ const HomePage = () => {
               </motion.div>
 
               <motion.div
-                className="mt-8 flex flex-wrap gap-3"
+                className="mt-8 grid gap-3 sm:grid-cols-2"
                 variants={staggerContainer(0.14, 0.08)}
               >
                 {about.stats.map((item) => (
                   <motion.div
                     key={item.label}
-                    className="neo-panel-soft motion-card rounded-2xl px-4 py-3"
+                    className="neo-panel-soft motion-card flex min-h-[96px] flex-col justify-between rounded-2xl px-4 py-4"
                     variants={scaleIn()}
                     whileHover={cardHover}
                   >
-                    <p className="text-xs uppercase tracking-[0.2em] text-white/38">
-                      {item.label}
-                    </p>
-                    <p className="mt-1 text-sm font-semibold text-white">
+                    <p className="text-lg font-semibold text-white sm:text-xl">
                       {item.value}
+                    </p>
+                    <p className="mt-4 text-[11px] uppercase tracking-[0.2em] text-white/38">
+                      {item.label}
                     </p>
                   </motion.div>
                 ))}

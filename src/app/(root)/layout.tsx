@@ -1,5 +1,6 @@
 import { Sora } from "next/font/google";
 
+import CustomCursor from "@/components/common/custom-cursor";
 import MotionProvider from "@/components/common/motion-provider";
 import Footer from "@/components/common/footer";
 import Header from "@/components/common/header";
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <body className={`${sora.variable} antialiased`}>
       <MotionProvider>
+        <CustomCursor />
         <Header />
         {children}
         <Footer />

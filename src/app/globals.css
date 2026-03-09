@@ -50,6 +50,23 @@ html {
     color: #f7f8ff;
   }
 
+  body[data-custom-cursor="true"],
+  body[data-custom-cursor="true"] a,
+  body[data-custom-cursor="true"] button,
+  body[data-custom-cursor="true"] summary,
+  body[data-custom-cursor="true"] label,
+  body[data-custom-cursor="true"] [role="button"],
+  body[data-custom-cursor="true"] [data-cursor="interactive"] {
+    cursor: none;
+  }
+
+  body[data-custom-cursor="true"] input,
+  body[data-custom-cursor="true"] textarea,
+  body[data-custom-cursor="true"] select,
+  body[data-custom-cursor="true"] [contenteditable="true"] {
+    cursor: auto;
+  }
+
   body::before,
   body::after {
     content: "";
@@ -104,6 +121,53 @@ html {
 .neo-shell {
   position: relative;
   isolation: isolate;
+}
+
+.custom-cursor-ring,
+.custom-cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 120;
+  pointer-events: none;
+  translate: -50% -50%;
+  will-change: transform, opacity;
+}
+
+.custom-cursor-ring {
+  display: grid;
+  height: 1.9rem;
+  width: 1.9rem;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(125, 211, 252, 0.62);
+  background:
+    radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.14), transparent 58%),
+    rgba(4, 9, 21, 0.14);
+  box-shadow:
+    0 0 0 1px rgba(124, 77, 255, 0.08),
+    0 0 16px rgba(86, 204, 242, 0.16);
+  backdrop-filter: blur(8px);
+}
+
+.custom-cursor-dot {
+  display: block;
+  height: 0.38rem;
+  width: 0.38rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #7dd3fc 0%, #ff2d9a 100%);
+  box-shadow:
+    0 0 10px rgba(125, 211, 252, 0.4),
+    0 0 14px rgba(255, 45, 154, 0.24);
+}
+
+.custom-cursor-glow {
+  height: 4.25rem;
+  width: 4.25rem;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(125, 211, 252, 0.18) 0%, rgba(124, 77, 255, 0.08) 38%, rgba(255, 45, 154, 0.05) 58%, transparent 74%);
+  filter: blur(10px);
 }
 
 .neo-shell::before {
@@ -262,6 +326,29 @@ html {
   background: radial-gradient(circle, rgba(255, 45, 154, 0.18), transparent 72%);
 }
 
+.neo-gradient-mesh {
+  background:
+    radial-gradient(circle at 16% 18%, rgba(86, 204, 242, 0.24), transparent 24%),
+    radial-gradient(circle at 84% 14%, rgba(124, 77, 255, 0.24), transparent 22%),
+    radial-gradient(circle at 52% 78%, rgba(255, 45, 154, 0.2), transparent 28%),
+    linear-gradient(135deg, rgba(7, 18, 37, 0.38), rgba(5, 12, 26, 0.08) 46%, rgba(7, 18, 37, 0.3));
+  filter: blur(90px);
+}
+
+.neo-particle {
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.background-particle-field {
+  position: absolute;
+  inset: 0;
+  opacity: 0.82;
+  mask-image: radial-gradient(circle at center, black 0%, black 62%, transparent 100%);
+}
+
 .motion-card:hover {
   border-color: rgba(125, 211, 252, 0.24);
   box-shadow:
@@ -372,7 +459,10 @@ html {
   .neo-button-primary,
   .neo-button-secondary,
   .social-chip,
-  .header-link::after {
+  .header-link::after,
+  .custom-cursor-ring,
+  .custom-cursor-dot,
+  .custom-cursor-glow {
     transition: none;
   }
 }

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --noEmit",
-    "lint": "next lint"
+    "lint": "next lint",
+    "update:profile-readme": "node scripts/update-profile-readme.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

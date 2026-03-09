@@ -27,7 +27,12 @@ import {
   SiWebpack,
 } from "react-icons/si";
 
-import { CONTACT_EMAIL } from "./constants";
+import {
+  CONTACT_EMAIL,
+  getExperienceYearsText,
+} from "./constants";
+
+const experienceYearsText = getExperienceYearsText();
 
 export const navigation = [
   { label: "About", href: "/#about" },
@@ -45,7 +50,7 @@ export const hero = {
   kicker: "React / Next.js / UX-UI Certified",
   title: "Senior Frontend Engineer",
   subtitle:
-    "5+ years building scalable React, Next.js, and TypeScript applications with micro-frontends, BFF layers, strong UX thinking, and measurable performance gains.",
+    `Senior Frontend Engineer with ${experienceYearsText} delivering scalable React, Next.js, and TypeScript products, with deep focus on micro-frontends, BFF architecture, performance, accessibility, and design-aware UX.`,
   availability: "Open to work",
   location: "Bengaluru, India / Remote",
 };
@@ -77,12 +82,11 @@ export const about = {
   title: "About Me",
   greeting: "Senior Frontend Engineer",
   paragraphs: [
-    "Senior Frontend Engineer with 5+ years building scalable web applications across startup and enterprise environments using React, Next.js, TypeScript, and Node.js.",
-    "I specialize in micro-frontend architecture, BFF layer development, full-stack API integration, and turning strong UX ideas into production-ready interfaces that stay fast, accessible, and maintainable.",
-    "My work has delivered 35%+ performance gains, supported WCAG 2.1-aligned frontend quality, and helped teams move faster through better code review, onboarding, and shared engineering standards. I also bring an MCA background plus Meta frontend and React Native certifications.",
+    `With ${experienceYearsText} in frontend engineering, I build scalable products using React, Next.js, TypeScript, and Node.js.`,
+    "I focus on micro-frontends, BFF integration, performance, accessibility, and polished UX, helping teams ship faster with cleaner standards and 35%+ load-time gains.",
   ],
   stats: [
-    { label: "Experience", value: "5+ years" },
+    { label: "Experience", value: experienceYearsText },
     { label: "Performance", value: "35% faster load" },
     { label: "Teams Enabled", value: "10+ teams" },
     { label: "Certification", value: "Meta UX/UI" },

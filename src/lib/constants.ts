@@ -39,9 +39,13 @@ export const EXPERIENCE_START_LABEL = "Aug 2020";
 
 export function getExperienceYearsLabel(referenceDate = new Date()) {
   const years =
-    referenceDate.getFullYear() -
+    referenceDate.getUTCFullYear() -
     EXPERIENCE_START_YEAR -
-    (referenceDate.getMonth() < EXPERIENCE_START_MONTH_INDEX ? 1 : 0);
+    (referenceDate.getUTCMonth() < EXPERIENCE_START_MONTH_INDEX ? 1 : 0);
 
   return `${Math.max(years, 0)}+`;
+}
+
+export function getExperienceYearsText(referenceDate = new Date()) {
+  return `${getExperienceYearsLabel(referenceDate)} years`;
 }
