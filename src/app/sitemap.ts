@@ -3,18 +3,29 @@ import { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/constants";
 import { caseStudies } from "@/lib/case-studies";
 
-const routes = [
-  { path: "", changeFrequency: "weekly", priority: 1 },
-  { path: "/work", changeFrequency: "monthly", priority: 0.8 },
+type ChangeFrequency = NonNullable<
+  MetadataRoute.Sitemap[number]["changeFrequency"]
+>;
+
+const MONTHLY: ChangeFrequency = "monthly";
+const WEEKLY: ChangeFrequency = "weekly";
+
+const routes: Array<{
+  path: string;
+  changeFrequency: ChangeFrequency;
+  priority: number;
+}> = [
+  { path: "", changeFrequency: WEEKLY, priority: 1 },
+  { path: "/work", changeFrequency: MONTHLY, priority: 0.8 },
   ...caseStudies.map((study) => ({
     path: `/case-study/${study.slug}`,
-    changeFrequency: "monthly",
+    changeFrequency: MONTHLY,
     priority: 0.7,
   })),
-  { path: "/uses", changeFrequency: "monthly", priority: 0.7 },
-  { path: "/bookshelf", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/contact", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/about", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/uses", changeFrequency: MONTHLY, priority: 0.7 },
+  { path: "/bookshelf", changeFrequency: MONTHLY, priority: 0.6 },
+  { path: "/contact", changeFrequency: MONTHLY, priority: 0.6 },
+  { path: "/about", changeFrequency: MONTHLY, priority: 0.6 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -6,9 +6,9 @@ import { caseStudies } from "@/lib/case-studies";
 import CaseStudyDiagram from "@/components/case-study-diagram";
 
 type CaseStudyPageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export const dynamicParams = false;
@@ -18,8 +18,9 @@ export const generateStaticParams = () =>
     slug: study.slug,
   }));
 
-const CaseStudyDetailPage = ({ params }: CaseStudyPageProps) => {
-  const study = caseStudies.find((item) => item.slug === params.slug);
+const CaseStudyDetailPage = async ({ params }: CaseStudyPageProps) => {
+  const { slug } = await params;
+  const study = caseStudies.find((item) => item.slug === slug);
 
   if (!study) {
     notFound();

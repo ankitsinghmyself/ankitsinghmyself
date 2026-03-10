@@ -76,7 +76,7 @@ const Header = () => {
         <div
           id="mobile-navigation"
           aria-hidden={!menuOpen}
-          className={`md:hidden absolute inset-x-3 top-full z-40 mt-3 transform-gpu transition duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          className={`md:hidden absolute inset-x-3 top-full z-40 mt-3 transform-gpu transition duration-250 ease-neo ${
             menuOpen
               ? "pointer-events-auto scale-y-100 opacity-100 translate-y-0"
               : "pointer-events-none scale-y-95 opacity-0 -translate-y-2"
