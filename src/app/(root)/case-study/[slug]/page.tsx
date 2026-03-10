@@ -112,7 +112,7 @@ const CaseStudyDetailPage = ({ params }: CaseStudyPageProps) => {
               </span>
             </div>
 
-            <div className="mt-18 h-[480px] w-full">
+            <div className="mt-8 h-[480px] w-full">
               <CaseStudyDiagram nodes={study.diagram.nodes} />
             </div>
           </div>
