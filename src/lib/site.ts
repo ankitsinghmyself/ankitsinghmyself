@@ -160,42 +160,42 @@ export const projects = [
     summary:
       "Led 5+ Module Federation surfaces that allowed 10+ engineering teams to ship independently without cross-team release bottlenecks.",
     tags: ["Module Federation", "React", "TypeScript"],
-    href: "/#experience",
+    href: "/case-study/micro-frontend-platform",
   },
   {
     title: "BFF Layer on AWS",
     summary:
       "Built a Node.js and Express backend-for-frontend that reduced payload size by 20% and improved API response times by 40%.",
     tags: ["Node.js", "Express", "AWS"],
-    href: "/#experience",
+    href: "/case-study/bff-layer-on-aws",
   },
   {
     title: "Performance and Accessibility",
     summary:
       "Improved initial load time by 35% through code splitting, lazy loading, caching, and quality checks guided by Lighthouse and Web Vitals.",
     tags: ["Performance", "WCAG 2.1", "Lighthouse"],
-    href: "/#experience",
+    href: "/case-study/performance-and-accessibility",
   },
   {
     title: "Logistics Platform UI",
     summary:
       "Shipped 10+ REST integrations and responsive cross-browser interfaces for a live logistics product used by 500+ users.",
     tags: ["React", "TypeScript", "REST APIs"],
-    href: "/#experience",
+    href: "/case-study/logistics-platform-ui",
   },
   {
     title: "Driver Mobile App",
     summary:
       "Built 20+ React Native screens with navigation, push notifications, and production API integration for iOS and Android drivers.",
     tags: ["React Native", "Mobile", "APIs"],
-    href: "/#experience",
+    href: "/case-study/driver-mobile-app",
   },
   {
     title: "Shared Component System",
     summary:
       "Built reusable components and shared UI patterns that cut frontend effort by 25% while improving consistency across product modules.",
     tags: ["Design System", "SCSS", "Reusable UI"],
-    href: "/#skills",
+    href: "/case-study/shared-component-system",
   },
 ];
 
