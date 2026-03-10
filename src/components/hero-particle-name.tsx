@@ -189,7 +189,8 @@ const HeroParticleName = ({ text }: HeroParticleNameProps) => {
       sourceContext.fillStyle = "#ffffff";
       sourceContext.fillText(text, width / 2, height * 0.56);
 
-      const gap = width < 480 ? 5 : width < 900 ? 6 : 7;
+      const gap = width < 480 ? 10 : width < 900 ? 12 : 14;
+      const particleLimit = width < 768 ? 240 : 360;
       const imageData = sourceContext.getImageData(0, 0, width, height).data;
       const particles: Particle[] = [];
 
@@ -232,9 +233,14 @@ const HeroParticleName = ({ text }: HeroParticleNameProps) => {
         return;
       }
 
+      if (particles.length > particleLimit) {
+        particles.length = particleLimit;
+      }
+
       setCanvasReady(true);
 
       const startedAt = performance.now();
+      const maxRuntime = 3200;
 
       const render = (timestamp: number) => {
         if (cancelled) {
@@ -275,7 +281,8 @@ const HeroParticleName = ({ text }: HeroParticleNameProps) => {
           context.fill();
         }
 
-        animationFrameId = window.requestAnimationFrame(render);
+        animationFrameId =
+          elapsed < maxRuntime ? window.requestAnimationFrame(render) : 0;
       };
 
       animationFrameId = window.requestAnimationFrame(render);
@@ -285,7 +292,9 @@ const HeroParticleName = ({ text }: HeroParticleNameProps) => {
 
     return () => {
       cancelled = true;
-      window.cancelAnimationFrame(animationFrameId);
+      if (animationFrameId) {
+        window.cancelAnimationFrame(animationFrameId);
+      }
     };
   }, [bounds.height, bounds.width, shouldReduceMotion, text]);
 

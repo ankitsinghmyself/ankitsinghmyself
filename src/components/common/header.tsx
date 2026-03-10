@@ -2,13 +2,27 @@
 
 import Link from "next/link";
 import { Download, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { navigation, resumeHref } from "@/lib/site";
 import Logo from "./logo";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = originalOverflow;
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [menuOpen]);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
@@ -28,6 +42,7 @@ const Header = () => {
               <Link
                 key={item.href}
                 href={item.href}
+                prefetch={false}
                 className="header-link inline-flex text-xs font-medium text-white/72 transition hover:-translate-y-0.5 hover:text-white"
               >
                 {item.label}
@@ -50,6 +65,8 @@ const Header = () => {
             type="button"
             className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/6 text-white transition-transform duration-200 active:scale-95 md:hidden"
             aria-label="Toggle navigation"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
             onClick={() => setMenuOpen((open) => !open)}
           >
             {menuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
@@ -57,19 +74,22 @@ const Header = () => {
         </div>
 
         <div
-          className={`grid overflow-hidden transition-[grid-template-rows,opacity,margin] duration-300 md:hidden ${
+          id="mobile-navigation"
+          aria-hidden={!menuOpen}
+          className={`md:hidden absolute inset-x-3 top-full z-40 mt-3 transform-gpu transition duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] ${
             menuOpen
-              ? "mt-3 grid-rows-[1fr] opacity-100"
-              : "mt-0 grid-rows-[0fr] opacity-0"
+              ? "pointer-events-auto scale-y-100 opacity-100 translate-y-0"
+              : "pointer-events-none scale-y-95 opacity-0 -translate-y-2"
           }`}
         >
-          <div className="overflow-hidden">
-            <div className="grid gap-2 border-t border-white/10 pt-3">
+          <div className="rounded-2xl border border-white/12 bg-[#060b18]/95 p-4 shadow-[0_25px_70px_rgba(0,0,0,0.4)] backdrop-blur-xl">
+            <div className="grid gap-2">
               {navigation.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white/82 transition duration-200 hover:bg-white/10"
+                  prefetch={false}
+                  className="block rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white/82 transition duration-200 hover:bg-white/10"
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.label}
@@ -78,7 +98,7 @@ const Header = () => {
               <Link
                 href={resumeHref}
                 target="_blank"
-                className="mt-1 inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#7c4dff] via-[#675dff] to-[#ff2d9a] px-4 text-sm font-semibold text-white transition-transform duration-200 active:scale-[0.98]"
+                className="mt-1 inline-flex h-11 w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#7c4dff] via-[#675dff] to-[#ff2d9a] px-4 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
                 onClick={() => setMenuOpen(false)}
               >
                 Resume

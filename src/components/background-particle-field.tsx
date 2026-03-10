@@ -96,11 +96,10 @@ const BackgroundParticleField = () => {
     const width = bounds.width;
     const height = bounds.height;
     const devicePixelRatio = Math.min(window.devicePixelRatio || 1, 2);
-    const connectionDistance = width < 640 ? 88 : 116;
     const particleCount = clamp(
-      Math.round((width * height) / 24000),
-      30,
-      width < 640 ? 48 : 76,
+      Math.round((width * height) / 32000),
+      18,
+      width < 640 ? 30 : 48,
     );
 
     canvas.width = Math.round(width * devicePixelRatio);
@@ -115,16 +114,18 @@ const BackgroundParticleField = () => {
       return {
         alpha: 0.16 + Math.random() * 0.28,
         phase: Math.random() * Math.PI * 2,
-        radius: width < 640 ? 0.8 + Math.random() * 0.9 : 1 + Math.random() * 1.2,
+        radius: width < 640 ? 0.7 + Math.random() * 0.6 : 0.9 + Math.random() * 0.8,
         tint,
-        vx: (Math.random() - 0.5) * (width < 640 ? 0.08 : 0.12),
-        vy: (Math.random() - 0.5) * (width < 640 ? 0.06 : 0.1),
+        vx: (Math.random() - 0.5) * (width < 640 ? 0.05 : 0.08),
+        vy: (Math.random() - 0.5) * (width < 640 ? 0.04 : 0.07),
         x: Math.random() * width,
         y: Math.random() * height,
       };
     });
 
     let animationFrameId = 0;
+    const startedAt = performance.now();
+    const maxRuntime = 3600;
 
     const render = (timestamp: number) => {
       context.clearRect(0, 0, width, height);
@@ -149,32 +150,6 @@ const BackgroundParticleField = () => {
           drawY: particle.y + Math.cos(timestamp * 0.00024 + particle.phase) * 6,
         };
       });
-
-      for (let index = 0; index < positions.length; index += 1) {
-        const particle = positions[index];
-
-        for (let inner = index + 1; inner < positions.length; inner += 1) {
-          const otherParticle = positions[inner];
-          const dx = otherParticle.drawX - particle.drawX;
-          const dy = otherParticle.drawY - particle.drawY;
-          const distance = Math.hypot(dx, dy);
-
-          if (distance >= connectionDistance) {
-            continue;
-          }
-
-          const alpha =
-            (1 - distance / connectionDistance) *
-            (width < 640 ? 0.05 : 0.065);
-
-          context.beginPath();
-          context.strokeStyle = rgba(particle.tint, alpha);
-          context.lineWidth = 0.6;
-          context.moveTo(particle.drawX, particle.drawY);
-          context.lineTo(otherParticle.drawX, otherParticle.drawY);
-          context.stroke();
-        }
-      }
 
       for (const particle of positions) {
         const twinkle = 0.72 + Math.sin(timestamp * 0.0026 + particle.phase) * 0.22;
@@ -202,13 +177,21 @@ const BackgroundParticleField = () => {
         context.fill();
       }
 
-      animationFrameId = window.requestAnimationFrame(render);
+      const elapsed = timestamp - startedAt;
+
+      if (elapsed < maxRuntime) {
+        animationFrameId = window.requestAnimationFrame(render);
+      } else {
+        animationFrameId = 0;
+      }
     };
 
     animationFrameId = window.requestAnimationFrame(render);
 
     return () => {
-      window.cancelAnimationFrame(animationFrameId);
+      if (animationFrameId) {
+        window.cancelAnimationFrame(animationFrameId);
+      }
     };
   }, [bounds.height, bounds.width, shouldReduceMotion]);
 

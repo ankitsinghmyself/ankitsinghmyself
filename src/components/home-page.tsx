@@ -8,9 +8,8 @@ import {
   MapPin,
 } from "lucide-react";
 
-import ContactMailForm from "@/components/contact-mail-form";
-import DeferredBackgroundParticleField from "@/components/deferred-background-particle-field";
-import DeferredHeroParticleName from "@/components/deferred-hero-particle-name";
+import HeroNameStatic from "@/components/hero-name-static";
+import ContactFormGate from "@/components/contact-form-gate";
 import {
   about,
   contact,
@@ -51,37 +50,21 @@ const SectionHeading = ({
 const HomePage = () => {
   return (
     <main className="neo-shell overflow-hidden">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
-      >
-        <div className="neo-gradient-mesh absolute inset-[-18%] opacity-70" />
-        <div className="absolute inset-[-12%] bg-[radial-gradient(circle_at_18%_18%,rgba(86,204,242,0.16),transparent_28%),radial-gradient(circle_at_78%_18%,rgba(124,77,255,0.16),transparent_24%),radial-gradient(circle_at_52%_76%,rgba(255,45,154,0.12),transparent_28%)] blur-[90px]" />
-        <div className="absolute inset-[-12%] bg-[radial-gradient(circle_at_35%_28%,rgba(255,255,255,0.08),transparent_22%),radial-gradient(circle_at_65%_70%,rgba(86,204,242,0.08),transparent_24%),radial-gradient(circle_at_52%_45%,rgba(124,77,255,0.1),transparent_30%)] opacity-40 blur-[120px]" />
-        <div className="absolute inset-0">
-          <DeferredBackgroundParticleField />
-        </div>
-        <div className="ambient-orb ambient-orb-one" />
-        <div className="ambient-orb ambient-orb-two" />
-        <div className="ambient-orb ambient-orb-three" />
-      </div>
-
       <section className="mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-center px-4 pb-16 pt-28 text-center sm:px-6 lg:px-8">
         <div className="mx-auto flex w-full max-w-4xl flex-col">
           <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-[#56ccf2]/20 bg-[#071225]/80 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#7dd3fc]">
-            <span className="h-2 w-2 rounded-full bg-[#56ccf2] motion-safe:animate-pulse" />
+            <span className="h-2 w-2 rounded-full bg-[#56ccf2]" />
             {hero.availability}
           </div>
 
           <div className="mx-auto mt-10">
-            <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-[#7c4dff]/35 bg-[radial-gradient(circle_at_30%_30%,rgba(124,77,255,0.38),rgba(5,10,22,0.2))] shadow-[0_0_45px_rgba(124,77,255,0.3)] motion-safe:animate-[hero-float_7.5s_ease-in-out_infinite] sm:h-24 sm:w-24">
-              <span className="absolute inset-[-12px] rounded-full border border-white/10 animate-[pulse-ring_4s_ease-in-out_infinite]" />
+            <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-[#7c4dff]/35 bg-[radial-gradient(circle_at_30%_30%,rgba(124,77,255,0.38),rgba(5,10,22,0.2))] shadow-[0_0_45px_rgba(124,77,255,0.3)] sm:h-24 sm:w-24">
               <Code2 className="size-9 text-[#c4b5fd] sm:size-10" />
             </div>
           </div>
 
           <p className="neo-kicker mt-8">{hero.kicker}</p>
-          <DeferredHeroParticleName text={hero.name} />
+          <HeroNameStatic text={hero.name} />
           <p className="mt-4 text-lg font-medium text-white/82 sm:text-2xl">
             {hero.title}
           </p>
@@ -96,6 +79,7 @@ const HomePage = () => {
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Link
               href="/#contact"
+              prefetch={false}
               className="neo-button-primary inline-flex h-11 items-center justify-center gap-2 rounded-xl px-5 text-sm font-semibold"
             >
               Let&apos;s Talk
@@ -104,6 +88,7 @@ const HomePage = () => {
             <Link
               href={resumeHref}
               target="_blank"
+              prefetch={false}
               className="neo-button-secondary inline-flex h-11 items-center justify-center gap-2 rounded-xl px-5 text-sm font-semibold"
             >
               Resume
@@ -128,7 +113,8 @@ const HomePage = () => {
           <div className="mt-14 flex items-center justify-center">
             <Link
               href="/#about"
-              className="inline-flex flex-col items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-white/42 motion-safe:animate-[hero-scroll_2.8s_ease-in-out_infinite]"
+              prefetch={false}
+              className="inline-flex flex-col items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-white/42"
             >
               Scroll
               <ArrowDown className="size-4" />
@@ -136,7 +122,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
       <section
         id="about"
         className="relative scroll-mt-28 border-t border-white/6 py-16 sm:py-20 [contain-intrinsic-size:1px_960px] [content-visibility:auto]"
@@ -427,8 +412,8 @@ const HomePage = () => {
               </div>
             </div>
 
-            <div className="neo-panel rounded-[24px] p-5 transition-transform duration-300 hover:-translate-y-1 sm:p-6">
-              <ContactMailForm email={contact.email} />
+            <div className="neo-panel rounded-[24px] p-5 transition-transform duration-300 hover:-translate-y-1 sm:p-6 min-h-[340px]">
+              <ContactFormGate email={contact.email} />
             </div>
           </div>
         </div>
