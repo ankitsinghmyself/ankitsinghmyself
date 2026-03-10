@@ -115,9 +115,11 @@ const CaseStudyDiagram = ({ nodes }: CaseStudyDiagramProps) => {
         nodesConnectable={false}
         elementsSelectable={false}
         panOnDrag={false}
+        panOnScroll={false}
         zoomOnScroll={false}
         zoomOnPinch={false}
         zoomOnDoubleClick={false}
+        preventScrolling={false}
       >
         <Background
           gap={32}
