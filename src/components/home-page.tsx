@@ -5,6 +5,7 @@ import {
   ArrowRight,
   Code2,
   Download,
+  ExternalLink,
   MapPin,
 } from "lucide-react";
 
@@ -245,11 +246,10 @@ const HomePage = () => {
                   className="relative md:grid md:grid-cols-2 md:gap-10"
                 >
                   <div
-                    className={`ml-10 md:ml-0 ${
-                      index % 2 === 0
-                        ? "md:col-start-1 md:pr-10"
-                        : "md:col-start-2 md:pl-10"
-                    }`}
+                    className={`ml-10 md:ml-0 ${index % 2 === 0
+                      ? "md:col-start-1 md:pr-10"
+                      : "md:col-start-2 md:pl-10"
+                      }`}
                   >
                     <article className="neo-panel motion-card rounded-[22px] p-5 transition-transform duration-300 hover:-translate-y-1.5">
                       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -312,9 +312,25 @@ const HomePage = () => {
                 key={project.title}
                 className="neo-panel motion-card rounded-[22px] p-5 transition-transform duration-300 hover:-translate-y-1.5"
               >
-                <div className="inline-flex rounded-full border border-[#56ccf2]/20 bg-[#56ccf2]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7dd3fc]">
-                  Case Study
+                <div className="inline-flex justify-between w-full">
+                  <div className="inline-flex rounded-full border border-[#56ccf2]/20 bg-[#56ccf2]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7dd3fc]">
+                    Case Study
+                  </div>
+                  {project.doc_link && (
+                    <Link
+                      href={project.doc_link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      prefetch={false}
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-[#9ec8ff] transition hover:text-white"
+                      aria-label="Documentation"
+                    >
+                      Doc
+                      <ExternalLink className="size-4" />
+                    </Link>
+                  )}
                 </div>
+
                 <h3 className="mt-5 text-xl font-semibold text-white">
                   {project.title}
                 </h3>
@@ -328,7 +344,7 @@ const HomePage = () => {
                     </span>
                   ))}
                 </div>
-                <div className="mt-5 inline-flex">
+                <div className="mt-5 inline-flex justify-between w-full">
                   <Link
                     href={project.href}
                     className="inline-flex items-center gap-2 text-sm font-semibold text-[#9ec8ff] transition hover:text-white"
@@ -336,6 +352,8 @@ const HomePage = () => {
                     View section
                     <ArrowRight className="size-4" />
                   </Link>
+
+
                 </div>
               </article>
             ))}

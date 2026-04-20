@@ -110,7 +110,6 @@ export const experiences = [
       "TypeScript",
       "Module Federation",
       "Node.js",
-      "AWS",
       "GitHub Actions",
     ],
   },
@@ -161,13 +160,15 @@ export const projects = [
       "Led 5+ Module Federation surfaces that allowed 10+ engineering teams to ship independently without cross-team release bottlenecks.",
     tags: ["Module Federation", "React", "TypeScript"],
     href: "/case-study/micro-frontend-platform",
+    doc_link: 'https://l1nq.com/yv9kog7',
   },
   {
-    title: "BFF Layer on AWS",
+    title: "Backstage-Integrated BFF Layer",
     summary:
       "Built a Node.js and Express backend-for-frontend that reduced payload size by 20% and improved API response times by 40%.",
-    tags: ["Node.js", "Express", "AWS"],
-    href: "/case-study/bff-layer-on-aws",
+    tags: ["Node.js", "Express", "backstage"],
+    href: "/case-study/backstage-bff-layer",
+    doc_link: "https://l1nq.com/lpae5vs",
   },
   {
     title: "Performance and Accessibility",

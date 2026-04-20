@@ -138,14 +138,14 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: "bff-layer-on-aws",
-    title: "BFF Layer on AWS",
+    slug: "backstage-bff-layer",
+    title: "Backstage-Integrated BFF Layer",
     summary:
-      "Built a Node.js and Express backend-for-frontend that reduced payload size by 20% and improved API response times by 40%.",
-    role: "Frontend Engineer",
+      "Built a Node.js and Express backend-for-frontend integrated with Backstage to aggregate and normalize multiple services, reducing payload size by 20% and improving API response times by 40%.",
+    role: "Software Engineer",
     company: "Lowe's India",
     period: "2023 - Present",
-    tags: ["Node.js", "Express", "AWS"],
+    tags: ["Node.js", "Express", "Backstage"],
     metrics: [
       { label: "Payload Size", value: "20% smaller" },
       { label: "API Response", value: "40% faster" },
@@ -153,10 +153,12 @@ export const caseStudies: CaseStudy[] = [
       { label: "Teams Served", value: "5+ teams" },
     ],
     diagram: {
-      title: "BFF Data Flow",
-      description: "The BFF normalizes and optimizes upstream services.",
+      title: "Backstage → BFF → UI Flow",
+      description:
+        "Backstage acts as a platform layer, while the BFF aggregates and normalizes upstream services for frontend consumption.",
       nodes: [
         { title: "Client UI", subtitle: "React / Next.js" },
+        { title: "Backstage", subtitle: "Plugin / Platform Layer" },
         { title: "BFF Layer", subtitle: "Node.js + Express" },
         { title: "Upstream APIs", subtitle: "Core services" },
       ],
@@ -165,7 +167,7 @@ export const caseStudies: CaseStudy[] = [
       {
         title: "Context",
         content:
-          "Frontend teams were pulling from multiple services directly, causing over-fetching, inconsistent contracts, and slow page loads.",
+          "Frontend teams were pulling from multiple services directly, causing over-fetching, inconsistent contracts, and slow page loads. Backstage was used as a platform layer, but frontend teams still needed a simplified and stable API contract.",
       },
       {
         title: "Problem",
@@ -185,6 +187,7 @@ export const caseStudies: CaseStudy[] = [
         content: [
           "Designed the BFF contract and data aggregation strategy.",
           "Implemented Node.js/Express services with caching and retries.",
+          "Integrated the BFF layer with Backstage services/plugins.",
           "Instrumented observability for latency and error tracking.",
         ],
       },
@@ -207,7 +210,8 @@ export const caseStudies: CaseStudy[] = [
       {
         title: "Solution",
         content: [
-          "Deployed the BFF on AWS with autoscaling and health checks.",
+          "Built a Backstage-integrated BFF layer to unify multiple upstream services into a single frontend contract.",
+          "Deployed on AWS with autoscaling, health checks, and monitoring.",
           "Consolidated 10+ endpoints into a single frontend contract.",
           "Rolled out phased migration with backward compatibility.",
         ],
@@ -218,12 +222,14 @@ export const caseStudies: CaseStudy[] = [
           "Reduced payload size by 20% and improved response time by 40%.",
           "Simplified frontend data handling with consistent contracts.",
           "Improved reliability with centralized error handling.",
+          "Reduced direct dependency of frontend teams on multiple backend services.",
         ],
       },
       {
         title: "Learnings",
         content: [
           "Contracts are as important as performance wins.",
+          "Platform layers like Backstage still require a well-designed BFF for frontend efficiency.",
           "Observability must be built in from day one.",
           "Incremental migrations reduce risk and speed adoption.",
         ],
