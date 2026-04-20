@@ -1,5 +1,7 @@
 import { constructMetadata } from "@/lib/metadata";
+// @ts-ignore
 import "./globals.css";
+// @ts-ignore
 import "reactflow/dist/style.css";
 
 export const metadata = constructMetadata({});
