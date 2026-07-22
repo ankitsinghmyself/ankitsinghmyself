@@ -8,18 +8,21 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 import {
   SiAmazonwebservices,
+  SiApachekafka,
   SiDocker,
   SiExpress,
   SiGithubactions,
   SiGraphql,
   SiJavascript,
   SiJest,
+  SiKubernetes,
   SiMysql,
   SiNodedotjs,
   SiNextdotjs,
   SiReact,
   SiRedux,
   SiSass,
+  SiSpringboot,
   SiStyledcomponents,
   SiTailwindcss,
   SiTestinglibrary,
@@ -47,10 +50,10 @@ export const resumeHref =
 
 export const hero = {
   name: "Ankit Singh",
-  kicker: "React / Next.js / UX-UI Certified",
-  title: "Senior Frontend Engineer",
+  kicker: "Spring Boot / Kafka / Kubernetes / React",
+  title: "Full Stack Developer",
   subtitle:
-    `Senior Frontend Engineer with ${experienceYearsText} delivering scalable React, Next.js, and TypeScript products, with deep focus on micro-frontends, BFF architecture, performance, accessibility, and design-aware UX.`,
+    `Full Stack Developer with ${experienceYearsText} of experience building scalable backend microservices with Spring Boot, event-driven systems with Apache Kafka, container orchestration on Kubernetes, and modern frontends with React, Next.js, and TypeScript.`,
   availability: "Open to work",
   location: "Bengaluru, India / Remote",
 };
@@ -80,37 +83,40 @@ export const socials = [
 
 export const about = {
   title: "About Me",
-  greeting: "Senior Frontend Engineer",
+  greeting: "Full Stack Developer",
   paragraphs: [
-    `With ${experienceYearsText} in frontend engineering, I build scalable products using React, Next.js, TypeScript, and Node.js.`,
-    "I focus on micro-frontends, BFF integration, performance, accessibility, and polished UX, helping teams ship faster with cleaner standards and 35%+ load-time gains.",
+    `Full Stack Developer with ${experienceYearsText} of experience building microservices with Spring Boot, event-driven pipelines with Apache Kafka, container orchestration on Kubernetes, and modern frontends with React, Next.js, and TypeScript.`,
+    "I design and deliver end-to-end solutions — from scalable backend APIs and message-driven architectures to polished, performant frontends. I help teams ship faster, reduce operational overhead, and build systems that scale.",
   ],
   stats: [
     { label: "Experience", value: experienceYearsText },
-    { label: "Performance", value: "35% faster load" },
+    { label: "Microservices Built", value: "15+" },
     { label: "Teams Enabled", value: "10+ teams" },
-    { label: "Certification", value: "Meta UX/UI" },
+    { label: "K8s Deployments", value: "50+" },
   ],
 };
 
 export const experiences = [
   {
-    role: "Software Engineer (Frontend Lead)",
+    role: "Full Stack Engineer (Frontend Lead)",
     company: "Lowe's India",
     period: "July 2023 - Present",
     summary:
-      "Leading frontend performance, micro-frontend delivery, and BFF integration for internal product surfaces.",
+      "Leading full stack development — building scalable backend microservices with Spring Boot, event-driven pipelines with Apache Kafka, container orchestration on Kubernetes, and modern frontends with React and Next.js.",
     highlights: [
-      "Reduced initial page load time by 35% through code splitting, lazy loading, and API caching.",
+      "Designed and deployed 10+ Spring Boot microservices with RESTful APIs, service discovery, and centralized logging on Kubernetes clusters.",
+      "Built event-driven data pipelines using Apache Kafka for real-time inventory updates, reducing processing latency by 60%.",
       "Led 5+ micro-frontend modules and built a BFF layer that cut payload size by 20% and improved API response times by 40%.",
     ],
     tags: [
+      "Spring Boot",
+      "Apache Kafka",
+      "Kubernetes",
       "React",
       "Next.js",
       "TypeScript",
-      "Module Federation",
-      "Node.js",
-      "GitHub Actions",
+      "Docker",
+      "AWS",
     ],
   },
   {
@@ -198,9 +204,19 @@ export const projects = [
     tags: ["Design System", "SCSS", "Reusable UI"],
     href: "/case-study/shared-component-system",
   },
+  {
+    title: "Event-Driven Microservices Platform",
+    summary:
+      "Architected and deployed a set of Spring Boot microservices orchestrated on Kubernetes with Apache Kafka event streaming, achieving 60% lower processing latency and 99.9% uptime across production clusters.",
+    tags: ["Spring Boot", "Kafka", "Kubernetes", "Docker", "AWS"],
+    href: "/case-study/event-driven-microservices",
+  },
 ];
 
 export const skills = [
+  { label: "Spring Boot", icon: SiSpringboot },
+  { label: "Apache Kafka", icon: SiApachekafka },
+  { label: "Kubernetes", icon: SiKubernetes },
   { label: "React", icon: SiReact },
   { label: "Next.js", icon: SiNextdotjs },
   { label: "TypeScript", icon: SiTypescript },
@@ -226,7 +242,7 @@ export const skills = [
 export const contact = {
   email: CONTACT_EMAIL,
   note:
-    "Open to senior frontend roles, design systems work, performance-focused product teams, and design-aware web builds.",
+    "Open to full stack developer roles, backend microservices architecture, event-driven systems, performance engineering, and design-aware full stack builds.",
   methods: [
     {
       label: "Email",

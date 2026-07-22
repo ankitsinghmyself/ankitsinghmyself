@@ -34,7 +34,7 @@ export const navLinks = [
 ];
 
 export const EXPERIENCE_START_YEAR = 2020;
-export const EXPERIENCE_START_MONTH_INDEX = 7;
+export const EXPERIENCE_START_MONTH_INDEX = 8;
 export const EXPERIENCE_START_LABEL = "Aug 2020";
 
 export function getExperienceYearsLabel(referenceDate = new Date()) {

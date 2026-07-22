@@ -34,7 +34,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Micro-frontend Platform",
     summary:
       "Led a modular frontend platform that let multiple teams ship independently while improving performance and platform governance.",
-    role: "Frontend Lead",
+    role: "Full Stack Lead",
     company: "Lowe's India",
     period: "2023 - Present",
     tags: [
@@ -44,6 +44,8 @@ export const caseStudies: CaseStudy[] = [
       "TypeScript",
       "BFF",
       "Performance",
+      "Spring Boot",
+      "Kafka",
     ],
     metrics: [
       { label: "Teams Enabled", value: "10+ teams" },
@@ -241,7 +243,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Performance and Accessibility",
     summary:
       "Improved initial load time by 35% through code splitting, lazy loading, caching, and quality checks guided by Lighthouse and Web Vitals.",
-    role: "Frontend Engineer",
+    role: "Full Stack Engineer",
     company: "Lowe's India",
     period: "2023 - Present",
     tags: ["Performance", "WCAG 2.1", "Lighthouse"],

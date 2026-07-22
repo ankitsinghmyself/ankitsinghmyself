@@ -17,8 +17,9 @@ const Footer = ({ year }: FooterProps) => {
             <span className="text-sm font-semibold text-white">Ankit Singh</span>
           </div>
           <p className="mt-4 max-w-sm text-sm leading-7 text-white/58">
-            Senior frontend engineering, scalable systems, and design-aware web
-            experiences with measurable product impact.
+            Full stack engineering — Spring Boot microservices, Kafka event-driven
+            systems, Kubernetes orchestration, and design-aware web experiences
+            with measurable product impact.
           </p>
         </div>
 

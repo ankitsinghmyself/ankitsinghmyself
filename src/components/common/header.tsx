@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Download, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { navigation, resumeHref } from "@/lib/site";
+import { hero, navigation, resumeHref } from "@/lib/site";
 import Logo from "./logo";
 
 const Header = () => {
@@ -35,6 +35,7 @@ const Header = () => {
           >
             <Logo width={24} height={24} />
             <span className="text-sm font-semibold text-white">Ankit</span>
+
           </Link>
 
           <nav className="hidden items-center gap-6 md:flex">
