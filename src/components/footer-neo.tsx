@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { contact, resumeHref } from "@/lib/site";
+import { contact } from "@/lib/site";
 
 type FooterNeoProps = {
   year: number;

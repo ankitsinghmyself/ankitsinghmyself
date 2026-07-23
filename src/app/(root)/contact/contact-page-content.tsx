@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import HeaderNeo from "@/components/header-neo";
 import FooterNeo from "@/components/footer-neo";
-import { contact, resumeHref } from "@/lib/site";
+import { contact } from "@/lib/site";
 
 const ContactPageContent = () => {
   const currentYear = new Date().getUTCFullYear();

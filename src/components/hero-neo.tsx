@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { neoHero, architectureLayers, resumeHref } from "@/lib/site";
+import { neoHero, architectureLayers } from "@/lib/site";
 
 const HeroNeo = () => {
   return (
