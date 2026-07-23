@@ -47,37 +47,37 @@ const AboutPageContent = () => {
             <div className="h-[1px] w-full bg-outline-variant"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-            {/* Core Foundation */}
+            {/* Frontend Foundation */}
             <div className="border border-outline-variant bg-surface-container-lowest p-6 relative overflow-hidden group">
-              <div className="font-data-mono text-secondary mb-4 text-label-md">Phase_01: CORE_JAVA</div>
+              <div className="font-data-mono text-secondary mb-4 text-label-md">Phase_01: REACT_FOUNDATION</div>
               <p className="font-body-md text-on-surface-variant mb-6">
-                Began with the rigorous principles of OOP in Java. Mastered concurrency models, JVM internals, and the foundational patterns of enterprise software construction.
+                Began by building interactive frontend experiences with React. Developed a strong foundation in component architecture, state management, and responsive user interfaces.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">Multithreading</span>
-                <span className="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">Memory_Mgmt</span>
+                <span className="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">ReactJS</span>
+                <span className="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">UI_Architecture</span>
               </div>
             </div>
-            {/* System Scaling */}
+            {/* Backend Engineering */}
             <div className="border border-outline-variant bg-surface-container-lowest p-6 relative overflow-hidden group">
-              <div className="font-data-mono text-secondary mb-4 text-label-md">Phase_02: DISTRIBUTED_REASONING</div>
+              <div className="font-data-mono text-secondary mb-4 text-label-md">Phase_02: JAVA_SPRING_BOOT</div>
               <p className="font-body-md text-on-surface-variant mb-6">
-                Evolved into complex distributed systems. Integrating Kafka for event-driven streams and Kubernetes for orchestration. Focus shifted to eventual consistency and service mesh.
+                Expanded into backend engineering with Java and Spring Boot. Built maintainable APIs and enterprise services while deepening expertise in OOP, concurrency, and JVM fundamentals.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">Event_Sourcing</span>
-                <span className="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">High_Availability</span>
+                <span className="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">Java</span>
+                <span className="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">Spring_Boot</span>
               </div>
             </div>
-            {/* Full Stack Architecture */}
+            {/* Distributed Architecture */}
             <div className="border border-outline-variant bg-surface-container-lowest p-6 relative overflow-hidden group">
-              <div className="font-data-mono text-secondary mb-4 text-label-md">Phase_03: END_TO_END_LIFECYCLE</div>
+              <div className="font-data-mono text-secondary mb-4 text-label-md">Phase_03: DISTRIBUTED_CLOUD</div>
               <p className="font-body-md text-on-surface-variant mb-6">
-                Current focus: Bridging low-latency backend services with high-fidelity frontend architectures. Managing the entire CI/CD pipeline and cloud-native infrastructure.
+                Progressed to distributed systems and full-stack architecture, working with Kafka, Kubernetes, CI/CD, and cloud-native infrastructure to build resilient services end to end.
               </p>
               <div className="flex flex-wrap gap-2">
+                <span className="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">Distributed_Systems</span>
                 <span className="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">Cloud_Native</span>
-                <span className="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">Terraform</span>
               </div>
             </div>
           </div>
@@ -97,14 +97,17 @@ const AboutPageContent = () => {
                 <div className="font-data-mono text-label-md mb-6 border-b border-primary-fixed-dim pb-2 inline-block">CORE_DEPENDENCIES</div>
                 <ul className="space-y-4 font-data-mono text-body-md">
                   <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-secondary-container"></span> REACT
+                  </li>
+                  <li className="flex items-center gap-3">
                     <span className="w-2 h-2 bg-secondary-container"></span> JAVA 17 / SPRING BOOT 3
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="w-2 h-2 bg-secondary-container"></span> APACHE KAFKA (BROKER/STREAMS)
                   </li>
-                  <li className="flex items-center gap-3">
+                  {/* <li className="flex items-center gap-3">
                     <span className="w-2 h-2 bg-secondary-container"></span> KUBERNETES &amp; DOCKER
-                  </li>
+                  </li> */}
                   <li className="flex items-center gap-3">
                     <span className="w-2 h-2 bg-secondary-container"></span> MONGODB &amp; POSTGRESQL
                   </li>

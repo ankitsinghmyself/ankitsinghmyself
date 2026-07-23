@@ -25,9 +25,9 @@ export const neoHero = {
 // ─── Blueprint Architecture Layers ───
 export const architectureLayers = [
   {
-    icon: "hub",
-    label: "Kubernetes",
-    sublabel: "NODE_CLUSTER_v4",
+    icon: "code",
+    label: "React",
+    sublabel: "UI_RUNTIME",
     color: "border-primary",
     iconColor: "text-primary",
   },
