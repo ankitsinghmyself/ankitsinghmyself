@@ -1,0 +1,402 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SYSTEM_ARCHITECT | CONTACT_PROTOCOL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#7a3000",
+                    "secondary-fixed": "#ffdbcc",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#eaeef2",
+                    "on-primary-fixed": "#001b3e",
+                    "surface-container-highest": "#dfe3e7",
+                    "outline-variant": "#c4c6d0",
+                    "on-primary-container": "#7594cb",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#747780",
+                    "background": "#f6fafe",
+                    "secondary-container": "#fe6b00",
+                    "inverse-on-surface": "#edf1f5",
+                    "primary-fixed": "#d6e3ff",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "primary-container": "#002b5c",
+                    "on-surface-variant": "#43474f",
+                    "surface": "#f6fafe",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "inverse-surface": "#2c3134",
+                    "secondary": "#a04100",
+                    "primary-fixed-dim": "#aac7ff",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#dfe3e7",
+                    "surface-bright": "#f6fafe",
+                    "on-secondary-fixed": "#351000",
+                    "on-primary-fixed-variant": "#264779",
+                    "on-background": "#171c1f",
+                    "surface-container-low": "#f0f4f8",
+                    "secondary-fixed-dim": "#ffb693",
+                    "surface-dim": "#d6dade",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#07182b",
+                    "surface-tint": "#3f5f92",
+                    "on-secondary-container": "#572000",
+                    "tertiary-container": "#1d2d41",
+                    "tertiary-fixed": "#d3e4fe",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e4e9ed",
+                    "on-surface": "#171c1f",
+                    "inverse-primary": "#aac7ff",
+                    "primary": "#001736",
+                    "on-tertiary-container": "#8495ad",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "48px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "base-unit": "4px",
+                    "grid-size": "20px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Hanken Grotesk"],
+                    "data-mono": ["JetBrains Mono"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f6fafe;
+            background-image: 
+                linear-gradient(to right, #cbd5e1 1px, transparent 1px),
+                linear-gradient(to bottom, #cbd5e1 1px, transparent 1px);
+            background-size: 20px 20px;
+            position: relative;
+        }
+        .blueprint-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle at 50% 50%, rgba(214, 227, 255, 0.2) 0%, transparent 80%);
+            z-index: -1;
+        }
+        .cad-border {
+            border: 1px solid #CBD5E1;
+        }
+        .cad-accent-border {
+            border: 2px solid #a04100;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .annotation-line {
+            height: 1px;
+            background-color: #747780;
+            position: relative;
+        }
+        .annotation-line::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -2px;
+            width: 5px;
+            height: 5px;
+            background: #747780;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<div class="blueprint-overlay" style="background: radial-gradient(circle at 14.375% 99.3179%, rgba(214, 227, 255, 0.4) 0%, transparent 80%);"></div>
+<!-- TopAppBar -->
+<header class="w-full border-b border-outline-variant bg-surface dark:bg-background sticky top-0 z-50"><div class="flex justify-between items-center h-16 px-margin-desktop max-w-[1440px] mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">architecture</span>
+                ENGINEER_CORE_v1.0
+            </div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant dark:text-outline-variant pb-1 hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200 cursor-crosshair" href="#">Projects</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant dark:text-outline-variant pb-1 hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200 cursor-crosshair" href="#">Stack</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-secondary dark:text-secondary-fixed border-b-2 border-secondary pb-1 cursor-crosshair" href="#">About</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant dark:text-outline-variant pb-1 hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200 cursor-crosshair" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-6 py-2 font-label-md uppercase tracking-wider hover:opacity-90 active:opacity-70 transition-all border border-primary cursor-crosshair">
+                    Resume.pdf
+                </button>
+</div>
+</div></header>
+<main class="pt-32 pb-24 px-margin-mobile md:px-gutter max-w-[1440px] mx-auto min-h-screen">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left Side: Context & Info -->
+<div class="lg:col-span-5 space-y-12">
+<section>
+<div class="inline-flex items-center gap-2 mb-4">
+<span class="w-3 h-3 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-data-mono text-label-sm text-secondary uppercase tracking-widest">SYSTEM_READY</span>
+</div><div class="inline-flex items-center gap-2 mb-4 ml-6">
+<span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+<span class="font-data-mono text-label-sm text-primary font-bold uppercase tracking-widest border border-primary px-2 py-0.5">STATUS: OPEN_TO_WORK</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-6">INITIATE_HANDSHAKE</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-prose">
+                        Interface with the core architect. Submit technical inquiries, project proposals, or system integration requests through the secured communication portal.
+                    </p>
+</section>
+<!-- Technical Annotations Section -->
+<div class="space-y-8 hidden md:block">
+<div class="flex items-start gap-4">
+<div class="annotation-line w-12 mt-3"></div>
+<div>
+<span class="font-data-mono text-label-sm text-outline">LOC_COORDINATES</span>
+<p class="font-data-mono text-body-md font-bold">40.7128° N, 74.0060° W</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="annotation-line w-12 mt-3"></div>
+<div>
+<span class="font-data-mono text-label-sm text-outline">RESPONSE_LATENCY</span>
+<p class="font-data-mono text-body-md font-bold">&lt; 24_HOURS</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="annotation-line w-12 mt-3"></div>
+<div>
+<span class="font-data-mono text-label-sm text-outline">TIME_ZONE</span>
+<p class="font-data-mono text-body-md font-bold">IST (UTC+5:30)</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="annotation-line w-12 mt-3"></div>
+<div>
+<span class="font-data-mono text-label-sm text-outline">AVAILABILITY</span>
+<p class="font-data-mono text-body-md font-bold">US_HOURS_COMPATIBLE</p>
+</div>
+</div></div>
+<section class="p-6 bg-surface-container-low cad-border">
+<h3 class="font-data-mono text-label-md font-bold mb-6 text-primary">ENCRYPTED_CHANNELS</h3>
+<div class="space-y-4">
+<a class="flex items-center justify-between p-3 border border-outline-variant bg-white hover:border-secondary transition-all group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary" data-icon="share">share</span>
+<span class="font-data-mono text-label-md">LINKEDIN_STRATUM</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<a class="flex items-center justify-between p-3 border border-outline-variant bg-white hover:border-secondary transition-all group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary" data-icon="code">code</span>
+<span class="font-data-mono text-label-md">GITHUB_REPOSITORY</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<a class="flex items-center justify-between p-3 border border-outline-variant bg-white hover:border-secondary transition-all group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary" data-icon="mail">mail</span>
+<span class="font-data-mono text-label-md">DIRECT_UPLINK</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</section>
+</div>
+<!-- Right Side: Connection Protocol Form -->
+<div class="lg:col-span-7">
+<div class="bg-white cad-border relative overflow-hidden">
+<!-- Technical Header Decoration -->
+<div class="bg-primary px-6 py-3 flex justify-between items-center">
+<span class="font-data-mono text-label-sm text-white uppercase tracking-tighter">CONNECTION_PROTOCOL_V2.0.4</span>
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-on-primary-container"></div>
+<div class="w-2 h-2 rounded-full bg-on-primary-container"></div>
+</div>
+</div>
+<form class="p-8 md:p-12 space-y-10" id="contact-form">
+<!-- Name Field -->
+<div class="relative group">
+<label class="font-data-mono text-label-sm text-outline absolute -top-3 left-3 bg-white px-2 z-10">IDENTITY.NAME</label>
+<div class="flex">
+<span class="flex items-center justify-center px-4 bg-surface-container-high border-y border-l border-outline-variant text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="fingerprint">fingerprint</span>
+</span>
+<input class="w-full bg-transparent border-outline-variant focus:border-secondary focus:ring-0 font-data-mono text-body-md p-4 transition-colors" placeholder="ENTER_NAME..." type="text">
+</div>
+</div>
+<!-- Email Field -->
+<div class="relative group">
+<label class="font-data-mono text-label-sm text-outline absolute -top-3 left-3 bg-white px-2 z-10">COMM_UPLINK.EMAIL</label>
+<div class="flex">
+<span class="flex items-center justify-center px-4 bg-surface-container-high border-y border-l border-outline-variant text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="alternate_email">alternate_email</span>
+</span>
+<input class="w-full bg-transparent border-outline-variant focus:border-secondary focus:ring-0 font-data-mono text-body-md p-4 transition-colors" placeholder="ADDRESS@HOST.EXT" type="email">
+</div>
+</div>
+<!-- Message Field -->
+<div class="relative group">
+<label class="font-data-mono text-label-sm text-outline absolute -top-3 left-3 bg-white px-2 z-10">DATA_PACKET.MESSAGE</label>
+<textarea class="w-full bg-transparent border-outline-variant focus:border-secondary focus:ring-0 font-data-mono text-body-md p-4 transition-colors resize-none" placeholder="ENCODE_MESSAGE_HERE..." rows="5"></textarea>
+<div class="absolute bottom-3 right-3 opacity-20 pointer-events-none">
+<span class="material-symbols-outlined text-4xl" data-icon="data_array">data_array</span>
+</div>
+</div>
+<!-- Technical Stats Footer in Form -->
+<div class="flex flex-col md:flex-row justify-between items-end gap-6 pt-6">
+<div class="space-y-2">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1 bg-outline-variant overflow-hidden">
+<div class="h-full bg-secondary w-2/3"></div>
+</div>
+<span class="font-data-mono text-[10px] text-outline">SIGNAL_STRENGTH: 67%</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-16 h-1 bg-outline-variant overflow-hidden">
+<div class="h-full bg-secondary w-full animate-pulse"></div>
+</div>
+<span class="font-data-mono text-[10px] text-outline">ENCRYPTION: AES-256</span>
+</div>
+</div>
+<button class="w-full md:w-auto bg-primary text-white font-data-mono text-label-md px-10 py-4 border-2 border-primary hover:bg-secondary hover:border-secondary transition-all duration-300 flex items-center justify-center gap-3 group" type="submit">
+                                EXECUTE_TRANSMISSION
+                                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="send">send</span>
+</button>
+</div>
+</form>
+<!-- Bottom Form Status bar -->
+<div class="bg-surface-container-high border-t border-outline-variant px-6 py-2 flex justify-between">
+<span class="font-data-mono text-[10px] text-on-surface-variant italic">ID: PROTOCOL_CF_994</span>
+<span class="font-data-mono text-[10px] text-on-surface-variant" id="current-time">TIMESTAMP: 21:26:08</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Schematic Placeholder -->
+<div class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="cad-border p-6 bg-white flex flex-col gap-4">
+<span class="font-data-mono text-label-sm text-secondary">STRUCT_01</span>
+<div class="h-32 border border-dashed border-outline-variant flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-cover bg-center opacity-40" data-alt="A blueprint-style technical drawing of a complex software architecture diagram, featuring thin blue lines, precise grid alignment, and geometric shapes like blocks and nodes. The style is clean, clinical, and professional, reflecting high-end engineering precision with subtle navy and orange accents on a light blue-white background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD7bthBnXr6pVp_KepPAKhbXN092aZ1S9MjdkZgL5D9DLfDSZPz4Llgsl_0LH-j4G5R_tvGbCp24X6w-ViNy1pMgZ6G_PJtbcRz8P0TTGbW7f-HAuiqJMPgsgyMMYfK8AVsHTyXhfbzbYB8RkXyOMtbL3xUyluYbWeE4Uvo2z8L9Re9qm4BmQo3m7aCUqR6bLH3paOGCz3DEj0jThudMzdPfHTbWvKu-j1xMV0mfAQN3XbsRjELs-KgLg')"></div>
+</div>
+<p class="font-data-mono text-[11px] text-outline">MODULAR_CORE_INTEGRITY: OPTIMAL</p>
+</div>
+<div class="cad-border p-6 bg-white flex flex-col gap-4">
+<span class="font-data-mono text-label-sm text-secondary">STRUCT_02</span>
+<div class="h-32 border border-dashed border-outline-variant flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-cover bg-center opacity-40" data-alt="A minimalist architectural blueprint of a digital server interface, showing wireframe layouts of data streams and connection points. The visual is rendered in a clean CAD-inspired style with sharp edges, mathematical annotations, and a rhythm of vertical and horizontal lines in navy blue on a crisp white surface with light blue grid lines." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD4bpUw9pC_Dj2D_Kj4rLKr8OJfAZQ0-zEVpAOPGTl5ugSIryXF3bzffVr_HjfKoOL5X6rXiGAzQ9VYEIhgm5dFM1fvfN4L1mdfx_vGpTART8xn1ag-wtwhD2Tn6wMBh4prwu9f_yz7Zfu-vYyBVRD4ercbDoCIPzB63kFYFvyd3BLszJIOrdL_nJVajuo8XjXWufaaCOZUgCqYHp3v5TM4v9QjgYYM-07kmczpvxEUjbsI68XYDdDCsw')"></div>
+</div>
+<p class="font-data-mono text-[11px] text-outline">DATA_FLOW_STABILITY: 100%</p>
+</div>
+<div class="cad-border p-6 bg-white flex flex-col gap-4">
+<span class="font-data-mono text-label-sm text-secondary">STRUCT_03</span>
+<div class="h-32 border border-dashed border-outline-variant flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-cover bg-center opacity-40" data-alt="A macro photography style image of high-precision electronic engineering components, like microchips or circuit paths, stylized as a technical drawing with glowing orange highlights. The background is a soft light blue grid, and the composition feels spacious and structured, embodying the meticulous detail of a system architect's workspace." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDthoYLTJ6gdVX5aaUgva3WBbVo7j9Bns2qLjAnO64YhuSYv-PidzEBb3pfPNgO_J2q7OALdTzTVvm-KxW_HUZzZnnngBcBrmfSeHpupufuqcXIcKlBgOSjIOuOlzNjD03YKqHgExpcqf6VUna0OHyYhL03P1QVEN3EFIaNhqWLo-ypiD4pQIE-ZBGdriyObvogigKOddw1PbuMm19gJ6ZPANio_s7I48MCLnoAcWgP36JJr3CXvlA6Gw')"></div>
+</div>
+<p class="font-data-mono text-[11px] text-outline">ENCRYPTION_HASH: VERIFIED</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-outline-variant bg-surface w-full py-12">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 w-full px-margin-mobile md:px-gutter max-w-[1440px] mx-auto">
+<div class="flex flex-col gap-2 items-center md:items-start">
+<span class="font-data-mono text-code-sm text-primary font-bold">SYSTEM_ARCHITECT</span>
+<p class="font-data-mono text-label-sm text-on-surface-variant">© 2024 SYSTEM_ARCHITECT. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-data-mono text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">SOURCE_CODE</a>
+<a class="font-data-mono text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">LINKEDIN</a>
+<a class="font-data-mono text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">RESUME</a>
+</div>
+<div class="hidden lg:flex items-center gap-4">
+<span class="font-data-mono text-[10px] text-outline">ENV: PRODUCTION_STABLE</span>
+<span class="font-data-mono text-[10px] text-outline">NODE: 18.x.x</span>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction: Clock update
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toTimeString().split(' ')[0];
+            const timeElement = document.getElementById('current-time');
+            if (timeElement) {
+                timeElement.textContent = `TIMESTAMP: ${timeString}`;
+            }
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Form Submission visual feedback
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            
+            btn.disabled = true;
+            btn.innerHTML = `UPLOADING... <span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span>`;
+            
+            setTimeout(() => {
+                btn.classList.remove('bg-primary');
+                btn.classList.add('bg-secondary');
+                btn.innerHTML = `SUCCESS_TRANSMITTED <span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>`;
+                
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.classList.add('bg-primary');
+                    btn.classList.remove('bg-secondary');
+                    btn.innerHTML = originalText;
+                    form.reset();
+                }, 3000);
+            }, 1500);
+        });
+
+        // Background Paralax for Blueprint aesthetic
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            const overlay = document.querySelector('.blueprint-overlay');
+            overlay.style.background = `radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(214, 227, 255, 0.4) 0%, transparent 80%)`;
+        });
+    </script>
+
+
+
+</body></html>

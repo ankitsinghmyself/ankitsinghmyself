@@ -1,14 +1,16 @@
-import { Sora } from "next/font/google";
-
-import Footer from "@/components/common/footer";
-import Header from "@/components/common/header";
+import { Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import VercelAnalytics from "./vercel-analytics";
 
-const sora = Sora({
+const hankenGrotesk = Hanken_Grotesk({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-headline-lg",
   display: "swap",
-  weight: ["400", "600", "700"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-data-mono",
+  display: "swap",
 });
 
 export default function RootLayout({
@@ -16,13 +18,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const currentYear = new Date().getUTCFullYear();
-
   return (
-    <body suppressHydrationWarning className={`${sora.variable} antialiased`}>
-      <Header />
+    <body
+      suppressHydrationWarning
+      className={`${hankenGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
+    >
       {children}
-      <Footer year={currentYear} />
       <VercelAnalytics />
     </body>
   );

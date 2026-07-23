@@ -1,0 +1,388 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ABOUT // SYS.ARCH_CORE</title>
+<!-- Google Fonts: JetBrains Mono & Hanken Grotesk -->
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Hanken+Grotesk:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-high": "#e4e9ed",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed-variant": "#38485d",
+            "tertiary-fixed": "#d3e4fe",
+            "primary": "#001736",
+            "on-primary-container": "#7594cb",
+            "surface-container-highest": "#dfe3e7",
+            "tertiary": "#07182b",
+            "on-background": "#171c1f",
+            "inverse-on-surface": "#edf1f5",
+            "error": "#ba1a1a",
+            "on-tertiary-container": "#8495ad",
+            "surface-tint": "#3f5f92",
+            "secondary-container": "#fe6b00",
+            "surface": "#f6fafe",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#7a3000",
+            "on-secondary-fixed": "#351000",
+            "tertiary-container": "#1d2d41",
+            "outline-variant": "#c4c6d0",
+            "secondary": "#a04100",
+            "inverse-surface": "#2c3134",
+            "secondary-fixed-dim": "#ffb693",
+            "surface-container": "#eaeef2",
+            "primary-fixed": "#d6e3ff",
+            "on-primary-fixed": "#001b3e",
+            "primary-fixed-dim": "#aac7ff",
+            "on-tertiary-fixed": "#0b1c30",
+            "surface-dim": "#d6dade",
+            "surface-variant": "#dfe3e7",
+            "on-surface-variant": "#43474f",
+            "secondary-fixed": "#ffdbcc",
+            "on-error-container": "#93000a",
+            "surface-bright": "#f6fafe",
+            "inverse-primary": "#aac7ff",
+            "surface-container-low": "#f0f4f8",
+            "tertiary-fixed-dim": "#b7c8e1",
+            "background": "#f6fafe",
+            "on-primary-fixed-variant": "#264779",
+            "on-secondary": "#ffffff",
+            "on-surface": "#171c1f",
+            "on-error": "#ffffff",
+            "on-secondary-container": "#572000",
+            "on-primary": "#ffffff",
+            "primary-container": "#002b5c",
+            "outline": "#747780",
+            "on-tertiary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "base-unit": "4px",
+            "margin-mobile": "16px",
+            "gutter": "24px",
+            "grid-size": "20px",
+            "margin-desktop": "48px"
+          },
+          "fontFamily": {
+            "data-mono": ["JetBrains Mono"],
+            "headline-lg": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "label-md": ["JetBrains Mono"],
+            "headline-md": ["Hanken Grotesk"],
+            "headline-lg-mobile": ["Hanken Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "label-sm": ["JetBrains Mono"]
+          },
+          "fontSize": {
+            "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "500"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-image: 
+        linear-gradient(to right, rgba(203, 213, 225, 0.2) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(203, 213, 225, 0.2) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+    }
+    .technical-line {
+      position: relative;
+    }
+    .technical-line::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #CBD5E1;
+    }
+    .accent-border {
+      border: 1px solid #CBD5E1;
+      transition: border-color 0.2s ease;
+    }
+    .accent-border:hover {
+      border-color: #a04100;
+    }
+    .cursor-crosshair {
+      cursor: crosshair;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md selection:bg-secondary-fixed">
+<!-- TopNavBar Implementation from JSON -->
+<header class="bg-surface dark:bg-inverse-surface w-full top-0 sticky border-b border-outline-variant dark:border-outline z-50"><div class="flex justify-between items-center h-16 px-margin-desktop max-w-[1440px] mx-auto"><div class="font-headline-md text-headline-md font-bold text-primary dark:text-on-background flex items-center gap-2"><span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">architecture</span>ENGINEER_CORE_v1.0</div><nav class="hidden md:flex items-center gap-8"><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant dark:text-outline-variant pb-1 hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200 cursor-crosshair" href="#">Projects</a><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant dark:text-outline-variant pb-1 hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200 cursor-crosshair" href="#">Stack</a><a class="font-label-md text-label-md uppercase tracking-wider text-secondary dark:text-secondary-fixed border-b-2 border-secondary pb-1 cursor-crosshair" href="#">About</a><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant dark:text-outline-variant pb-1 hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200 cursor-crosshair" href="#">Contact</a></nav><div class="flex items-center gap-4"><button class="bg-primary text-on-primary px-6 py-2 font-label-md uppercase tracking-wider hover:opacity-90 active:opacity-70 transition-all border border-primary cursor-crosshair">Resume.pdf</button></div></div></header>
+<main class="max-w-[1440px] mx-auto px-margin-desktop py-12">
+<!-- Hero / Title Section -->
+<section class="mb-16 grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8">
+<div class="mb-4 inline-flex items-center gap-2 px-3 py-1 bg-secondary-fixed text-on-secondary-fixed font-data-mono text-label-sm border border-secondary">
+<span class="material-symbols-outlined text-[14px]">settings_accessibility</span>
+          IDENTITY_MODULE: v1.0.4
+        </div>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-6">
+          Architecting resilient digital <span class="text-secondary">ecosystems</span>.
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+          Senior Full-Stack Engineer specializing in high-throughput distributed systems. I bridge the gap between architectural theory and production-grade implementation.
+        </p>
+</div>
+<div class="md:col-span-4 flex justify-end items-start pt-4">
+<div class="relative w-full aspect-square max-w-[320px] bg-surface-container-high border border-outline-variant p-4">
+<div class="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-secondary"></div>
+<div class="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-right-2 border-secondary"></div>
+<img class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500 border border-outline" data-alt="A professional studio portrait of a software architect in a minimalist setting. The lighting is crisp and cool, casting soft shadows that emphasize a structured, modern professional look. The background is a clean, architectural light grey that blends seamlessly with the technical drafting aesthetic of the website. High-key lighting highlights the sharp lines of a dark navy blazer, maintaining a sophisticated engineering brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1mXMi54sPdINsL8okKxD0vJgeKSKzbIzY3DcGnEIxUDJbNehQatI37jbzqiNyZL2pfwB91dVjZPg4VsQ34UMxhXNGpsFZFKoa-UlJ2Z7fE7NicG6klSpli_ugAiTbQueM5yMqlIQkMoj7SyKyDoZpt9YvaOwQdAUudbrM101qLJQvJyOG3rAf7TZ_pFOJOryCWOFi_BiXTUfXe19gcAb8zCaazDBz9kuM5Zt11qKuQnxl0VZYZb3Ibw">
+<div class="mt-4 font-data-mono text-label-sm text-on-surface-variant">
+            IMG_ID: 0x9928_B <br>
+            LOC: 40.7128° N, 74.0060° W
+          </div>
+</div>
+</div>
+</section>
+<!-- Engineering Journey -->
+<section class="mb-20">
+<div class="flex items-center gap-4 mb-8">
+<h2 class="font-headline-md text-headline-md text-primary shrink-0">01_ENGINEERING_JOURNEY</h2>
+<div class="h-[1px] w-full bg-outline-variant"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Core Foundation -->
+<div class="accent-border bg-white p-6 relative overflow-hidden group">
+<div class="font-data-mono text-secondary mb-4 text-label-md">Phase_01: CORE_JAVA</div>
+<p class="font-body-md text-on-surface-variant mb-6">
+            Began with the rigorous principles of OOP in Java. Mastered concurrency models, JVM internals, and the foundational patterns of enterprise software construction.
+          </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">Multithreading</span>
+<span class="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">Memory_Mgmt</span>
+</div>
+</div>
+<!-- System Scaling -->
+<div class="accent-border bg-white p-6 relative overflow-hidden group">
+<div class="font-data-mono text-secondary mb-4 text-label-md">Phase_02: DISTRIBUTED_REASONING</div>
+<p class="font-body-md text-on-surface-variant mb-6">
+            Evolved into complex distributed systems. Integrating Kafka for event-driven streams and Kubernetes for orchestration. Focus shifted to eventual consistency and service mesh.
+          </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">Event_Sourcing</span>
+<span class="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">High_Availability</span>
+</div>
+</div>
+<!-- Full Stack Architecture -->
+<div class="accent-border bg-white p-6 relative overflow-hidden group">
+<div class="font-data-mono text-secondary mb-4 text-label-md">Phase_03: END_TO_END_LIFECYCLE</div>
+<p class="font-body-md text-on-surface-variant mb-6">
+            Current focus: Bridging low-latency backend services with high-fidelity frontend architectures. Managing the entire CI/CD pipeline and cloud-native infrastructure.
+          </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">Cloud_Native</span>
+<span class="px-2 py-1 bg-surface-container text-primary font-data-mono text-label-sm">Terraform</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Philosophy & Stack -->
+<section class="mb-20 bg-primary p-margin-desktop text-white">
+<div class="max-w-4xl mx-auto">
+<div class="mb-12">
+<h2 class="font-headline-md text-headline-md text-secondary-fixed mb-4">02_TECHNICAL_PHILOSOPHY</h2>
+<p class="font-body-lg text-body-lg text-primary-fixed-dim leading-relaxed">
+            "Software is not merely code; it is a structural blueprint for logic. I build for <span class="text-secondary-fixed">resilience</span> by anticipating failure, and for <span class="text-secondary-fixed">scale</span> by respecting the physics of data."
+          </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<div class="font-data-mono text-label-md mb-6 border-b border-primary-fixed-dim pb-2 inline-block">CORE_DEPENDENCIES</div>
+<ul class="space-y-4 font-data-mono text-body-md">
+<li class="flex items-center gap-3">
+<span class="w-2 h-2 bg-secondary-container"></span> JAVA 17 / SPRING BOOT 3
+              </li>
+<li class="flex items-center gap-3">
+<span class="w-2 h-2 bg-secondary-container"></span> APACHE KAFKA (BROKER/STREAMS)
+              </li>
+<li class="flex items-center gap-3">
+<span class="w-2 h-2 bg-secondary-container"></span> KUBERNETES &amp; DOCKER
+              </li>
+<li class="flex items-center gap-3">
+<span class="w-2 h-2 bg-secondary-container"></span> MONGODB &amp; POSTGRESQL
+              </li>
+</ul>
+</div>
+<div>
+<div class="font-data-mono text-label-md mb-6 border-b border-primary-fixed-dim pb-2 inline-block">ENGINEERING_PRINCIPLES</div>
+<ul class="space-y-4 font-body-md text-primary-fixed">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary-fixed mt-1">check_circle</span>
+<span class="">Type-safety as a first-class citizen.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary-fixed mt-1">check_circle</span>
+<span class="">Stateless service design for horizontal scaling.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary-fixed mt-1">check_circle</span>
+<span class="">Product-minded engineering (Context &gt; Syntax).</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Milestones (Spec Sheets) -->
+<section class="mb-20">
+<div class="flex items-center gap-4 mb-8">
+<h2 class="font-headline-md text-headline-md text-primary shrink-0">03_TECHNICAL_MILESTONES</h2>
+<div class="h-[1px] w-full bg-outline-variant"></div>
+</div>
+<div class="space-y-6">
+<!-- Milestone 01 -->
+<div class="bg-white border border-outline-variant overflow-hidden">
+<div class="bg-surface-container-high px-6 py-2 flex justify-between items-center border-b border-outline-variant">
+<span class="font-data-mono text-label-md text-primary">BUILD_ID: 2023_RT_STREAM</span>
+<span class="font-data-mono text-label-sm text-on-surface-variant">STATUS: DEPLOYED</span>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-12 gap-8">
+<div class="md:col-span-4">
+<h3 class="font-headline-md text-headline-md mb-2">Real-time Analytics Engine</h3>
+<p class="font-data-mono text-label-sm text-secondary">PROJECT_ALPHA</p>
+</div>
+<div class="md:col-span-8 grid grid-cols-2 gap-4">
+<div class="border-l-2 border-surface-container-highest pl-4">
+<div class="font-data-mono text-label-sm text-on-surface-variant">THROUGHPUT</div>
+<div class="font-headline-md text-primary">10M+ req/min</div>
+</div>
+<div class="border-l-2 border-surface-container-highest pl-4">
+<div class="font-data-mono text-label-sm text-on-surface-variant">LATENCY_P99</div>
+<div class="font-headline-md text-primary">&lt; 45ms</div>
+</div>
+<div class="col-span-2 mt-4 text-on-surface-variant">
+                Architected a reactive streaming pipeline processing millions of concurrent events using Spring WebFlux and Kafka, reducing infrastructure costs by 40%.
+              </div>
+</div>
+</div>
+</div>
+<!-- Milestone 02 -->
+<div class="bg-white border border-outline-variant overflow-hidden">
+<div class="bg-surface-container-high px-6 py-2 flex justify-between items-center border-b border-outline-variant">
+<span class="font-data-mono text-label-md text-primary">BUILD_ID: 2022_CORE_MIGRATION</span>
+<span class="font-data-mono text-label-sm text-on-surface-variant">STATUS: COMPLETED</span>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-12 gap-8">
+<div class="md:col-span-4">
+<h3 class="font-headline-md text-headline-md mb-2">Legacy Modernization</h3>
+<p class="font-data-mono text-label-sm text-secondary">PROJECT_OMEGA</p>
+</div>
+<div class="md:col-span-8 grid grid-cols-2 gap-4">
+<div class="border-l-2 border-surface-container-highest pl-4">
+<div class="font-data-mono text-label-sm text-on-surface-variant">UPTIME</div>
+<div class="font-headline-md text-primary">99.995%</div>
+</div>
+<div class="border-l-2 border-surface-container-highest pl-4">
+<div class="font-data-mono text-label-sm text-on-surface-variant">TECH_DEBT</div>
+<div class="font-headline-md text-primary">-65%</div>
+</div>
+<div class="col-span-2 mt-4 text-on-surface-variant">
+                Led the migration of a monolithic PHP application to a Java/Spring Boot microservices architecture hosted on EKS, improving developer velocity significantly.
+              </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Personal Interests / Human Side -->
+<section class="mb-20">
+<div class="flex items-center gap-4 mb-8">
+<h2 class="font-headline-md text-headline-md text-primary shrink-0">04_PERSONAL_INTERESTS</h2>
+<div class="h-[1px] w-full bg-outline-variant"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="flex gap-6 items-start p-6 bg-white border border-outline-variant">
+<div class="w-16 h-16 bg-surface-container-highest flex items-center justify-center border border-outline-variant shrink-0">
+<span class="material-symbols-outlined text-primary text-[32px]">terminal</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">OSS Contributor</h4>
+<p class="text-on-surface-variant">Maintaining several utility libraries in the Java ecosystem focused on JSON parsing and reactive patterns.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start p-6 bg-white border border-outline-variant">
+<div class="w-16 h-16 bg-surface-container-highest flex items-center justify-center border border-outline-variant shrink-0">
+<span class="material-symbols-outlined text-primary text-[32px]">groups</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Tech Mentor</h4>
+<p class="text-on-surface-variant">Advocate for technical literacy and career growth. Mentoring junior developers in system design fundamentals.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Implementation from JSON -->
+<footer class="bg-surface-container-low dark:bg-tertiary-container w-full bottom-0 border-t border-outline-variant dark:border-outline">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-[1440px] mx-auto px-margin-desktop py-8 select-none gap-6">
+<div class="font-data-mono text-label-md font-bold text-primary dark:text-primary-fixed">
+        ©2024 SYSTEM_ARCHITECT // STATUS: OPTIMAL
+      </div>
+<div class="flex flex-col md:flex-row gap-4 md:gap-12 font-data-mono text-label-sm">
+<div class="flex items-center gap-2 text-on-tertiary-fixed-variant dark:text-on-tertiary-container">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+          K8S_NODE_01: ACTIVE
+        </div>
+<div class="flex items-center gap-2 text-on-tertiary-fixed-variant dark:text-on-tertiary-container">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+          DB_REPLICA: ONLINE
+        </div>
+<div class="flex items-center gap-2 text-on-tertiary-fixed-variant dark:text-on-tertiary-container">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+          KAFKA_CLUSTER: CONNECTED
+        </div>
+</div>
+<div class="font-data-mono text-label-sm text-on-tertiary-fixed-variant">
+        SYSTEM_STABLE_v1.0
+      </div>
+</div>
+</footer>
+<script>
+    // Lightweight interaction for the technical background lines
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      // This could trigger subtle highlight effects if desired
+    });
+
+    // Technical annotation behavior
+    const cards = document.querySelectorAll('.accent-border');
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        // Optional: Trigger a console-like log effect or highlight
+      });
+    });
+  </script>
+
+
+
+</body></html>

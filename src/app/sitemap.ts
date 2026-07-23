@@ -22,8 +22,6 @@ const routes: Array<{
     changeFrequency: MONTHLY,
     priority: 0.7,
   })),
-  { path: "/uses", changeFrequency: MONTHLY, priority: 0.7 },
-  { path: "/bookshelf", changeFrequency: MONTHLY, priority: 0.6 },
   { path: "/contact", changeFrequency: MONTHLY, priority: 0.6 },
   { path: "/about", changeFrequency: MONTHLY, priority: 0.6 },
 ];

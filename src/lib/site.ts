@@ -1,268 +1,274 @@
-import {
-  FaEnvelope,
-  FaGithub,
-  FaLinkedin,
-  FaMobileAlt,
-  FaUniversalAccess,
-} from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import {
-  SiAmazonwebservices,
-  SiApachekafka,
-  SiDocker,
-  SiExpress,
-  SiGithubactions,
-  SiGraphql,
-  SiJavascript,
-  SiJest,
-  SiKubernetes,
-  SiMysql,
-  SiNodedotjs,
-  SiNextdotjs,
-  SiReact,
-  SiRedux,
-  SiSass,
-  SiSpringboot,
-  SiStyledcomponents,
-  SiTailwindcss,
-  SiTestinglibrary,
-  SiTypescript,
-  SiWebpack,
-} from "react-icons/si";
+import { CONTACT_EMAIL, getExperienceYearsLabel } from "./constants";
 
-import {
-  CONTACT_EMAIL,
-  getExperienceYearsText,
-} from "./constants";
-
-const experienceYearsText = getExperienceYearsText();
-
-export const navigation = [
-  { label: "About", href: "/#about" },
-  { label: "Experience", href: "/#experience" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Skills", href: "/#skills" },
-  { label: "Contact", href: "/#contact" },
-];
+export const experienceYears = getExperienceYearsLabel();
 
 export const resumeHref =
   "https://drive.google.com/file/d/1cXjUkPhHm7zFPj0dfIUEFkJ1zwCbPW3-/view?usp=sharing";
 
-export const hero = {
-  name: "Ankit Singh",
-  kicker: "Spring Boot / Kafka / Kubernetes / React",
-  title: "Full Stack Developer",
-  subtitle:
-    `Full Stack Developer with ${experienceYearsText} of experience building scalable backend microservices with Spring Boot, event-driven systems with Apache Kafka, container orchestration on Kubernetes, and modern frontends with React, Next.js, and TypeScript.`,
-  availability: "Open to work",
-  location: "Bengaluru, India / Remote",
+// ─── Blueprint Navigation ───
+export const neoNav = [
+  { label: "Projects", href: "/projects" },
+  { label: "Stack", href: "/stack" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
+
+// ─── Blueprint Hero ───
+export const neoHero = {
+  statusBadge: 'FILE_REF: PORTFOLIO_INDEX_2020',
+  tagline:
+    "Specializing in high-concurrency distributed systems and resilient microservices architecture. Engineering precision at every layer of the stack.",
+  ctaPrimary: { label: "VIEW_PROJECTS", href: "#projects" },
+  ctaSecondary: { label: "GET_CV", href: resumeHref },
 };
 
-export const socials = [
+// ─── Blueprint Architecture Layers ───
+export const architectureLayers = [
   {
-    label: "GitHub",
-    href: "https://github.com/ankitsinghmyself/",
-    icon: FaGithub,
+    icon: "hub",
+    label: "Kubernetes",
+    sublabel: "NODE_CLUSTER_v4",
+    color: "border-primary",
+    iconColor: "text-primary",
   },
   {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/ankitsinghmyself/",
-    icon: FaLinkedin,
+    icon: "sync_alt",
+    label: "Kafka",
+    sublabel: "MSG_BROKER_01",
+    color: "border-primary",
+    iconColor: "text-primary",
   },
   {
-    label: "X",
-    href: "https://x.com/singh311094/",
-    icon: FaXTwitter,
+    icon: "terminal",
+    label: "Spring Boot",
+    sublabel: "APP_RUNTIME",
+    color: "border-secondary",
+    iconColor: "text-secondary",
   },
   {
-    label: "Email",
-    href: `mailto:${CONTACT_EMAIL}`,
-    icon: FaEnvelope,
+    icon: "database",
+    label: "MongoDB",
+    sublabel: "STORAGE_ENGINE",
+    color: "border-primary",
+    iconColor: "text-primary",
   },
 ];
 
-export const about = {
-  title: "About Me",
-  greeting: "Full Stack Developer",
-  paragraphs: [
-    `Full Stack Developer with ${experienceYearsText} of experience building microservices with Spring Boot, event-driven pipelines with Apache Kafka, container orchestration on Kubernetes, and modern frontends with React, Next.js, and TypeScript.`,
-    "I design and deliver end-to-end solutions — from scalable backend APIs and message-driven architectures to polished, performant frontends. I help teams ship faster, reduce operational overhead, and build systems that scale.",
-  ],
-  stats: [
-    { label: "Experience", value: experienceYearsText },
-    { label: "Microservices Built", value: "15+" },
-    { label: "Teams Enabled", value: "10+ teams" },
-    { label: "K8s Deployments", value: "50+" },
-  ],
+// ─── Blueprint Bento Projects ───
+export const blueprintProjects = [
+  {
+    title: "Distributed_Ledger_v2",
+    description: "High-throughput transaction processor with Kafka integration.",
+    tags: ["JAVA", "KAFKA"],
+    colSpan: "md:col-span-2 md:row-span-1",
+    rowSpan: "",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDlbcwBOUSj9deDlCeTJCUa4Il3ttjKzg82bwqQGHg89wZO5b6bELRCP792BEJGXZ8AWJzuhs2ol9XfqKze3wlVz-Efvwhx9Hn7jL3Tqd2U9nSo0nHUaS7M6TamTrodm6cyT9TcIWQnfwXTuByaTKWoEWPqINEbkVnPAikB7Pzgi_73er07HqdG61vbo6e3A6gSgzFMmuR-5CDXZfjkvNUpCXoxW6vjKObU2admTqK3E1E_7MUQJCqLiA",
+    imgAlt: "A clean technical diagram of a microservices architecture showing interconnected nodes with lines and data flow symbols. The style is minimalist blueprint with white and navy colors, featuring subtle secondary orange accents for active paths. High professional lighting and structured layout.",
+    hasImage: true,
+  },
+  {
+    title: "Kube_Orchestrator",
+    description: "Custom Kubernetes operator for automated database provisioning and scaling.",
+    tags: ["GO", "K8S", "TERRAFORM"],
+    colSpan: "md:col-span-1 md:row-span-2",
+    rowSpan: "",
+    image: "",
+    hasImage: false,
+  },
+  {
+    title: "React_Core_UI",
+    description: "Enterprise-grade design system and component library.",
+    tags: ["TS", "REACT"],
+    colSpan: "md:col-span-1",
+    rowSpan: "",
+    image: "",
+    hasImage: false,
+  },
+  {
+    title: "Stream_Pipe",
+    description: "Real-time data ingestion pipeline with MongoDB sink.",
+    tags: ["MONGODB", "SPRING"],
+    colSpan: "md:col-span-1",
+    rowSpan: "",
+    image: "",
+    hasImage: false,
+  },
+];
+
+// ─── Blueprint Stack ───
+export const neoStack = [
+  {
+    title: "CORE_ENGINE",
+    icon: "settings",
+    items: ["Java 17+ (LTS)", "Spring Boot 3.x", "ReactJS"],
+  },
+  {
+    title: "DATA_INFRA",
+    icon: "storage",
+    items: ["Apache Kafka", "MongoDB Atlas", "PostgreSQL"],
+  },
+];
+
+// ─── Blueprint Stack Page Types ───
+export type StackBackendItem = {
+  icon: string;
+  name: string;
+  spec: string;
+  badge: string | null;
+  description: string;
 };
 
-export const experiences = [
+export type StackDataItem = {
+  icon: string;
+  name: string;
+  spec: string;
+};
+
+export type StackFrontendItem = {
+  icon: string | null;
+  name: string;
+  spec: string;
+  sub: string;
+  fullWidth?: boolean;
+};
+
+export type StackOrchestrationRowItem = {
+  icon: string;
+  name: string;
+  spec: string;
+  type: "row";
+};
+
+export type StackOrchestrationIacItem = {
+  name: string;
+  spec: string;
+  type: "iac";
+  description: string;
+};
+
+export type StackSection =
+  | {
+      id: "backend";
+      label: string;
+      title: string;
+      colSpan: string;
+      items: StackBackendItem[];
+    }
+  | {
+      id: "data-infra";
+      label: string;
+      title: string;
+      colSpan: string;
+      items: StackDataItem[];
+    }
+  | {
+      id: "frontend";
+      label: string;
+      title: string;
+      colSpan: string;
+      items: StackFrontendItem[];
+    }
+  | {
+      id: "orchestration";
+      label: string;
+      title: string;
+      colSpan: string;
+      items: (StackOrchestrationRowItem | StackOrchestrationIacItem)[];
+    };
+
+// ─── Blueprint Stack Page: Detailed Bento Data ───
+export const stackSections: StackSection[] = [
   {
-    role: "Full Stack Engineer (Frontend Lead)",
-    company: "Lowe's India",
-    period: "July 2023 - Present",
-    summary:
-      "Leading full stack development — building scalable backend microservices with Spring Boot, event-driven pipelines with Apache Kafka, container orchestration on Kubernetes, and modern frontends with React and Next.js.",
-    highlights: [
-      "Designed and deployed 10+ Spring Boot microservices with RESTful APIs, service discovery, and centralized logging on Kubernetes clusters.",
-      "Built event-driven data pipelines using Apache Kafka for real-time inventory updates, reducing processing latency by 60%.",
-      "Led 5+ micro-frontend modules and built a BFF layer that cut payload size by 20% and improved API response times by 40%.",
-    ],
-    tags: [
-      "Spring Boot",
-      "Apache Kafka",
-      "Kubernetes",
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Docker",
-      "AWS",
+    id: "backend",
+    label: "01",
+    title: "Backend & JVM",
+    colSpan: "md:col-span-8",
+    items: [
+      {
+        icon: "code",
+        name: "JAVA",
+        spec: "SPEC: 21_AMAZON_CORRETTO",
+        badge: "LTS",
+        description: "Multi-threading, Virtual Threads, Records.",
+      },
+      {
+        icon: "bolt",
+        name: "SPRING BOOT",
+        spec: "SPEC: 3.2.2_MVC_WEBFLUX",
+        badge: null,
+        description: "Security, Cloud Stream, JPA, AOP.",
+      },
+      {
+        icon: "hub",
+        name: "KAFKA",
+        spec: "SPEC: CONFLUENT_7.5",
+        badge: null,
+        description: "Event streaming, Schema Registry, KSQL.",
+      },
     ],
   },
   {
-    role: "Software Engineer",
-    company: "Skills Outsource Think Pvt Ltd.",
-    period: "November 2021 - July 2023",
-    summary:
-      "Built production web and mobile experiences for logistics and driver operations.",
-    highlights: [
-      "Delivered 10+ REST API integrations and responsive cross-browser UI for a live logistics platform used by 500+ users.",
-      "Built a React Native driver app with 20+ screens and resolved critical production issues within 24 hours.",
-    ],
-    tags: [
-      "React",
-      "TypeScript",
-      "React Native",
-      "SCSS",
-      "REST APIs",
-      "Cross-browser UI",
+    id: "data-infra",
+    label: "02",
+    title: "Data Infrastructure",
+    colSpan: "md:col-span-4",
+    items: [
+      { icon: "database", name: "POSTGRESQL", spec: "V16.1_RDS" },
+      { icon: "folder_zip", name: "MONGODB", spec: "ATLAS_7.0_MDB" },
+      { icon: "memory", name: "REDIS", spec: "ELASTICACHE_OSS" },
     ],
   },
   {
-    role: "Software Developer",
-    company: "GlobalShiksha India Pvt. Ltd.",
-    period: "August 2020 - October 2021",
-    summary:
-      "Built reusable frontend systems and real-time integrations across multiple product modules.",
-    highlights: [
-      "Built 15+ reusable React components and standardized UI across 5+ modules.",
-      "Scaled a shared component system that reduced development effort by 25% and improved lead workflow automation.",
+    id: "frontend",
+    label: "03",
+    title: "Frontend Systems",
+    colSpan: "md:col-span-5",
+    items: [
+      { icon: null, name: "REACT", spec: "V18.2_HOOKS", sub: "LIB_01" },
+      { icon: null, name: "TYPESCRIPT", spec: "STRICT_5.3", sub: "LIB_02" },
+      { icon: null, name: "TAILWIND CSS", spec: "JIT_ENGINE", sub: "STYLING", fullWidth: true },
     ],
-    tags: [
-      "React",
-      "Component Library",
-      "SCSS",
-      "REST APIs",
-      "Facebook Webhooks",
-      "Reusable UI",
+  },
+  {
+    id: "orchestration",
+    label: "04",
+    title: "Orchestration",
+    colSpan: "md:col-span-7",
+    items: [
+      {
+        icon: "grid_view",
+        name: "KUBERNETES",
+        spec: "VER: 1.29_EKS",
+        type: "row",
+      },
+      {
+        icon: "box",
+        name: "DOCKER",
+        spec: "VER: 24.0_RUNTIME",
+        type: "row",
+      },
+      {
+        name: "TERRAFORM",
+        spec: "HCL_SPEC: 1.7.0",
+        type: "iac",
+        description:
+          "Modular provisioning of VPCs, Subnets, and IAM roles across AWS regions.",
+      },
     ],
   },
 ];
 
-export const projects = [
-  {
-    title: "Micro-frontend Platform",
-    summary:
-      "Led 5+ Module Federation surfaces that allowed 10+ engineering teams to ship independently without cross-team release bottlenecks.",
-    tags: ["Module Federation", "React", "TypeScript"],
-    href: "/case-study/micro-frontend-platform",
-    doc_link: 'https://l1nq.com/yv9kog7',
-  },
-  {
-    title: "Backstage-Integrated BFF Layer",
-    summary:
-      "Built a Node.js and Express backend-for-frontend that reduced payload size by 20% and improved API response times by 40%.",
-    tags: ["Node.js", "Express", "backstage"],
-    href: "/case-study/backstage-bff-layer",
-    doc_link: "https://l1nq.com/lpae5vs",
-  },
-  {
-    title: "Performance and Accessibility",
-    summary:
-      "Improved initial load time by 35% through code splitting, lazy loading, caching, and quality checks guided by Lighthouse and Web Vitals.",
-    tags: ["Performance", "WCAG 2.1", "Lighthouse"],
-    href: "/case-study/performance-and-accessibility",
-  },
-  {
-    title: "Logistics Platform UI",
-    summary:
-      "Shipped 10+ REST integrations and responsive cross-browser interfaces for a live logistics product used by 500+ users.",
-    tags: ["React", "TypeScript", "REST APIs"],
-    href: "/case-study/logistics-platform-ui",
-  },
-  {
-    title: "Driver Mobile App",
-    summary:
-      "Built 20+ React Native screens with navigation, push notifications, and production API integration for iOS and Android drivers.",
-    tags: ["React Native", "Mobile", "APIs"],
-    href: "/case-study/driver-mobile-app",
-  },
-  {
-    title: "Shared Component System",
-    summary:
-      "Built reusable components and shared UI patterns that cut frontend effort by 25% while improving consistency across product modules.",
-    tags: ["Design System", "SCSS", "Reusable UI"],
-    href: "/case-study/shared-component-system",
-  },
-  {
-    title: "Event-Driven Microservices Platform",
-    summary:
-      "Architected and deployed a set of Spring Boot microservices orchestrated on Kubernetes with Apache Kafka event streaming, achieving 60% lower processing latency and 99.9% uptime across production clusters.",
-    tags: ["Spring Boot", "Kafka", "Kubernetes", "Docker", "AWS"],
-    href: "/case-study/event-driven-microservices",
-  },
-];
-
-export const skills = [
-  { label: "Spring Boot", icon: SiSpringboot },
-  { label: "Apache Kafka", icon: SiApachekafka },
-  { label: "Kubernetes", icon: SiKubernetes },
-  { label: "React", icon: SiReact },
-  { label: "Next.js", icon: SiNextdotjs },
-  { label: "TypeScript", icon: SiTypescript },
-  { label: "JavaScript", icon: SiJavascript },
-  { label: "React Native", icon: FaMobileAlt },
-  { label: "Node.js", icon: SiNodedotjs },
-  { label: "Express", icon: SiExpress },
-  { label: "GraphQL", icon: SiGraphql },
-  { label: "Redux Toolkit", icon: SiRedux },
-  { label: "Tailwind CSS", icon: SiTailwindcss },
-  { label: "SCSS", icon: SiSass },
-  { label: "Styled Components", icon: SiStyledcomponents },
-  { label: "Module Federation", icon: SiWebpack },
-  { label: "AWS", icon: SiAmazonwebservices },
-  { label: "GitHub Actions", icon: SiGithubactions },
-  { label: "Jest", icon: SiJest },
-  { label: "Testing Library", icon: SiTestinglibrary },
-  { label: "Docker", icon: SiDocker },
-  { label: "MySQL", icon: SiMysql },
-  { label: "Accessibility", icon: FaUniversalAccess },
+// ─── Blueprint Terminal Lines ───
+export const terminalLines = [
+  "[ SCANNING_INFRA ] ... OK",
+  "[ LOAD_BALANCER ] ... ACTIVE",
+  "[ MEMORY_USAGE ] ... 42.1%",
+  "[ LATENCY_MS ] ... 14ms",
 ];
 
 export const contact = {
   email: CONTACT_EMAIL,
-  note:
-    "Open to full stack developer roles, backend microservices architecture, event-driven systems, performance engineering, and design-aware full stack builds.",
-  methods: [
-    {
-      label: "Email",
-      value: CONTACT_EMAIL,
-      href: `mailto:${CONTACT_EMAIL}`,
-    },
-    {
-      label: "Location",
-      value: "Bengaluru, India / Remote",
-      href: "#",
-    },
-    {
-      label: "LinkedIn",
-      value: "ankitsinghmyself",
-      href: "https://www.linkedin.com/in/ankitsinghmyself/",
-    },
-    {
-      label: "GitHub",
-      value: "ankitsinghmyself",
-      href: "https://github.com/ankitsinghmyself/",
-    },
-  ],
+  github: "https://github.com/ankitsinghmyself/",
+  linkedin: "https://www.linkedin.com/in/ankitsinghmyself/",
 };
+

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
-import HomePage from "@/components/home-page";
+import HomePageNeo from "@/components/home-page-neo";
 import { constructMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Ankit Singh | Full Stack Developer",
+  title: "Ankit Singh | Senior Full Stack Software Engineer",
   description:
-    "Full Stack Developer with 6+ years building Spring Boot microservices, Apache Kafka event-driven systems, Kubernetes container orchestration, and modern React/Next.js frontends.",
+    "Senior Full Stack Software Engineer — building scalable enterprise systems with React, Spring Boot, Kafka, and Kubernetes.",
 });
 
-export default HomePage;
+export default HomePageNeo;
